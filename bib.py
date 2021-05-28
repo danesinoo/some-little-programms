@@ -10,7 +10,7 @@ def Split(str, a):
 bib = open (fname + '.bib', 'w')
 
 for line in rfile:
-    line= Split(line, (',','{','}','\n'))
+    line= Split(line, (';','{','}','\n'))
     for i in range(line.count('')): line.remove('')
     for i in range(len(line)): line[i]= line[i].strip(' \.'.strip('.'))
     if 'bibitem' in line: line.remove('bibitem')
