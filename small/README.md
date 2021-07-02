@@ -1,4 +1,4 @@
-# some other program
+# Some other program
 
 In this section there are three programms:
 
