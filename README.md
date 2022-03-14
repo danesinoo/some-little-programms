@@ -30,4 +30,7 @@ This programm play 1 milion mathces at poker Texas hold 'em in 1'30'', with my c
 which isn't really powerful. 
 You insert your cards, say how many players are in the game and then it starts the count.
 It's easily manageable, so you can insert the cards in the center of the table while you're 
-playing
+playing 
+
+
+I also code clash.rs through which I tried and enjoyed rust. The .txt file is the input of the programm. The programm needs to be compiled. clash.rs gives you back the cards you may have some trouble against and the ones which you may not. You need to write by hand the matches and the result. There need to be 8 words, 1 letter, which may be V or S and two numbers based on the crowns you earned and the ones the opponent did. The code doesn't work if the input isn't written properly, for this reason I wrote a second programm which detect mistakes, though It happened I deleted it. I don't use the crown variable, I wasn't sure about the algorithm to make it useful. You can choose however you like how to call the cards, just remember it needs to be only one word. An advice may be using come character like _ ? . , to be able to write more than one word to determine the card. The output will use the chosen word. :3
