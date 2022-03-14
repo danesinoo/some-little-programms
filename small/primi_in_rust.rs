@@ -11,8 +11,8 @@ fn main() {
 
 //        primes[pointer] = i;
 //		  pointer += 1;
-		for prime in 0..&primes.len()-1 { // si divide per tutti i primi più piccoli
-			if i % primes[prime] == 0 {
+		for prime in &primes[..primes.len()-2] { // si divide per tutti i primi più piccoli
+			if i % prime == 0 {
 				primes.pop(); // se viene trovato un divisore del numero, il numero è tolto dal vettore
 
 // 				  pointer -= 1 // se fosse un array, non si toglie l'elemento, lo si riscrive
