@@ -1,5 +1,5 @@
 # some-little-programms
-bib.py generate a .bib file from a .txt file. 
+bib.py generates a .bib file from a .txt file. 
 It's useful to make a reference file for LaTex:
 if you already have a bibiography manual written (\bibitem{}{} like) it's enough to copy it 
 in a text file, then this programm will convert it to .bib. I needed to convert only @book and 
