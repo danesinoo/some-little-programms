@@ -3,7 +3,7 @@ use std::collections::HashSet;
 
 fn main() {
     // Open the file
-    let file = fs::read_to_string("/Users/carlorosso/Documents/clash.txt")
+    let file = fs::read_to_string("/Users/carlorosso/Documents/some-little-programms/clash.txt")
     .expect("Unable to read file");
 
     // inizializzo un vettore che poi conterra le posizioni delle righe

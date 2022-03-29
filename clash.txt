@@ -120,12 +120,3 @@ frecce pirotecnico golem_elisir arcieri mago gran_cavaliere drago_infernale valc
 pipistrelli principessa barile tronco orda_scheletri mongolfiera drago_infernale gran_cavaliere S 1 2
 domatore arciere spirito_fuoco scheletri valchiria tesla tronco terremoto S 1 2
 gigante_royale gabbia_goblin mago_zap principe_nero minatore barile_barbaro zap tornado V 3 1
-valchiria arcieri bombarolo spirito_cura barile_ossa scheletri_gigante mago mago_zap S 1 2
-fuorilegge drago_infernale strega barile orda_scheletri gran_cavaliere arcieri tronco S 1 2
-gigante furia strega bocciatore mago_zap zap sgherri arcieri V 3 0
-pekka barile_goblin principe_nero veleno domatore_ariete mago_zap fuorilegge strega_madre V 2 1
-strega barile valchiria mago_zap tronco gran_cavaliere orda_scheletri arcieri S 0 1
-tronco domatore valchiria scheletrini tesla spirito_fuoco fulmine pirotecnico V 2 1
-valchiria gigante_zap mago_zap tornado terremoto zap scintilla mini_pekka V 3 0
-tornado arcieri minatore torre_bombardiera cavaliere tronco arciere spaccamuro S 0 1
-specchio drago_infernale duplica principessa zap orda_scheletri gigante_royale scheletro_gigante V 3 2
