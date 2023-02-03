@@ -1,11 +1,22 @@
 use chrono::{DateTime, Datelike, Local, TimeZone, Timelike, Weekday};
+use home::home_dir;
 use prettytable::{row, Row, Table};
 use std::fs::OpenOptions;
 use std::io::prelude::*;
 use std::io::BufReader;
+use std::path::PathBuf;
+
+pub fn path() -> PathBuf {
+    let mut home = home_dir().expect("u windows, ah");
+    home.push(".config");
+    home.push("programmini");
+    home.push("buff");
+    home.push("studio.log");
+    home
+}
 
 pub fn display_info() {
-    let mut raw_data = RawData::from_file("/Users/carlorosso/.config/programmini/studio.log");
+    let mut raw_data = RawData::from_file(&path());
     raw_data.iter_mut().for_each(|raw| {
         raw.clean_up();
     });
@@ -42,59 +53,46 @@ impl RawData {
         }
     }
 
-    fn push(&mut self, time: DateTime<Local>, start: bool) {
+    fn push(&mut self, time: &DateTime<Local>, start: bool) {
         if start && self.start_time.len() == self.end_time.len() {
-            self.start_time.push(time);
+            self.start_time.push(*time);
         } else if !start && self.start_time.len() > self.end_time.len() {
-            self.end_time.push(time);
+            self.end_time.push(*time);
         }
     }
 
-    fn compute_index(name: &str, flag: &str, time: &DateTime<Local>, acc: &mut Vec<RawData>) {
+    fn compute_index(name: &str, flag: bool, time: &DateTime<Local>, acc: &mut Vec<RawData>) {
         if let Some(raw) = acc.iter_mut().find(|x| x.name == name) {
-            match flag.as_ref() {
-                "begin" => raw.push(*time, true),
-                "end" => raw.push(*time, false),
-                _ => unreachable!(),
-            }
+            raw.push(time, flag);
         } else {
             acc.push(RawData::new(&name));
             Self::compute_index(name, flag, time, acc);
         }
     }
 
-    fn parse_time(string: &str) -> Result<DateTime<Local>, chrono::ParseError> {
-        match Local.datetime_from_str(string, "%Y-%m-%d %H:%M:%S%.f %:z") {
-            Ok(datetime) => Ok(datetime),
-            Err(e) => Err(e),
-        }
+    fn parse_time(string: &str) -> DateTime<Local> {
+        Local
+            .datetime_from_str(string, "%Y-%m-%d %H:%M:%S%.f %:z")
+            .unwrap()
     }
 
-    fn from_file(file: &str) -> Vec<Self> {
+    fn from_file(file: &PathBuf) -> Vec<Self> {
         let file = OpenOptions::new().read(true).open(file).unwrap();
 
         let reader = BufReader::new(file).lines();
         reader
             .map(|line| {
-                if let Some((name, time)) = line.unwrap().split_once(' ') {
-                    (name.to_string(), time.to_string())
-                } else {
-                    unreachable!()
-                }
-            })
-            .map(|(name, time)| {
-                if let Some((name1, flag)) = name.split_once('_') {
-                    (
-                        name1.to_string(),
-                        flag.to_string(),
-                        Self::parse_time(&time).unwrap(),
-                    )
-                } else {
-                    unreachable!()
+                let line = line.unwrap();
+                let words = line.split_whitespace().collect::<Vec<_>>();
+                let time = Self::parse_time(&words[2..].join(" "));
+                match words[1] {
+                    "begin" => (words[0].to_string(), true, time),
+                    "end" => (words[0].to_string(), false, time),
+                    _ => unreachable!(),
                 }
             })
             .fold(Vec::new(), |mut acc, (name, flag, time)| {
-                Self::compute_index(&name, &flag, &time, &mut acc);
+                Self::compute_index(&name, flag, &time, &mut acc);
                 acc
             })
     }
@@ -129,7 +127,7 @@ impl RawData {
         self.end_time = ends;
         */
         if self.start_time.len() > self.end_time.len() {
-            self.start_time.pop();
+            self.end_time.push(Local::now());
         }
         self.start_time.sort();
         self.start_time.reverse();
@@ -157,50 +155,50 @@ fn get_week(raws: &Vec<DateTime<Local>>, which: u16) -> Vec<DateTime<Local>> {
 
 #[derive(Debug, Clone, Copy)]
 struct DataOnTime {
-    weekday: Weekday,
-    start_times: [u16; 7],
-    end_times: [u16; 7],
-    total_times: [u16; 7],
-    average_times: [u16; 7],
+    w: Weekday,
+    st: [u16; 7],
+    et: [u16; 7],
+    tt: [u16; 7],
+    at: [u16; 7],
 }
 
 impl DataOnTime {
-    fn new(weekday: Weekday) -> Self {
+    fn new(w: Weekday) -> Self {
         DataOnTime {
-            weekday,
-            start_times: [0; 7],
-            end_times: [0; 7],
-            total_times: [0; 7],
-            average_times: [0; 7],
+            w,
+            st: [0; 7],
+            et: [0; 7],
+            tt: [0; 7],
+            at: [0; 7],
         }
     }
 
     fn start_time(&mut self, raw: &RawData) -> &mut Self {
-        self.start_times.iter_mut().for_each(|start| {
-            self.weekday = self.weekday.succ();
+        self.st.iter_mut().for_each(|start| {
             if let Some(data) = raw
                 .start_time
                 .iter()
                 // sarebbe meglio andare dalla direzione giusta e non dalla fine...
                 .rev()
-                .find(|data| data.weekday() == self.weekday)
+                .find(|data| data.weekday() == self.w)
             {
                 *start = (data.hour() * 60 + data.minute()) as u16;
             } else {
                 *start = 0;
             }
+            self.w = self.w.succ();
         });
         self
     }
 
     fn end_time(&mut self, raw: &RawData) -> &mut Self {
-        self.end_times.iter_mut().for_each(|x| {
-            self.weekday = self.weekday.succ();
-            if let Some(data) = raw.end_time.iter().find(|x| x.weekday() == self.weekday) {
+        self.et.iter_mut().for_each(|x| {
+            if let Some(data) = raw.end_time.iter().find(|x| x.weekday() == self.w) {
                 *x = (data.hour() * 60 + data.minute()) as u16;
             } else {
                 *x = 0;
             }
+            self.w = self.w.succ();
         });
         self
     }
@@ -208,24 +206,24 @@ impl DataOnTime {
     // NB qui c'è un buggino: si chiama il next() e poi break, quindi dopo il
     // primo next, la catena si sfasa e non funziona più
     fn total_time(&mut self, raw: &RawData) -> &mut Self {
-        (0..7).for_each(|x| {
-            self.weekday = self.weekday.succ();
+        self.tt.iter_mut().for_each(|tt| {
             let from = raw
                 .start_time
                 .iter()
-                .position(|x| x.weekday() == self.weekday)
+                .position(|x| x.weekday() == self.w)
                 .unwrap_or(raw.end_time.len());
             let mut to = raw
                 .start_time
                 .iter()
-                .rposition(|x| x.weekday() == self.weekday)
+                .rposition(|x| x.weekday() == self.w)
                 .unwrap_or(0);
             if to != 0 {
                 to += 1;
             }
-            self.total_times[x] = (from..to)
+            *tt = (from..to)
                 .map(|i| (raw.end_time[i] - raw.start_time[i]).num_minutes() as u16)
                 .sum();
+            self.w = self.w.succ();
         });
         self
     }
@@ -239,8 +237,8 @@ impl DataOnTime {
         let mut rows = Vec::new();
         rows.push(Row::from(["".to_string()].into_iter().chain((0..7).map(
             |_| {
-                self.weekday = self.weekday.succ();
-                self.weekday.to_string()
+                self.w = self.w.succ();
+                self.w.pred().to_string()
             },
         ))));
 
@@ -252,21 +250,10 @@ impl DataOnTime {
             ));
         }
 
-        add_row(&mut rows, &self.start_times, "Start");
-        add_row(&mut rows, &self.end_times, "End");
-        add_row(&mut rows, &self.total_times, "Total");
-        add_row(&mut rows, &self.average_times, "Average");
+        add_row(&mut rows, &self.st, "Start");
+        add_row(&mut rows, &self.et, "End");
+        add_row(&mut rows, &self.tt, "Total");
+        add_row(&mut rows, &self.at, "Average");
         rows
-    }
-}
-
-#[cfg(test)]
-mod test {
-    #[allow(unused_imports)]
-    use super::*;
-
-    #[test]
-    fn prova() {
-        assert_eq!((0..7).any(|x| x == 7), false);
     }
 }
