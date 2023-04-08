@@ -17,25 +17,30 @@ pub fn path() -> PathBuf {
     home
 }
 
-pub fn display_info() {
+pub fn display_info(name: &str) {
     let now = Instant::now();
     let raw_data = RawData::from_file(&path());
     raw_data.iter().for_each(|raw_data| {
-        let mut data = DataOnTime::new(Local::now().weekday().succ());
-        let last_week = raw_data.week(0);
-        data.start_time(&last_week)
-            .end_time(&last_week)
-            .total_time(&last_week)
-            .average_time(raw_data);
-
-        // format data
-        let mut table = Table::init(data.to_rows());
-        table.set_titles(row![raw_data.name]);
-        table.printstd();
-        println!();
+        if raw_data.name == name || name == "all" {
+            display_data(raw_data);
+        }
     });
-    println!();
     println!("Time elapsed: {:?}ms", now.elapsed());
+}
+
+fn display_data(raw_data: &RawData) {
+    let mut data = DataOnTime::new(Local::now().weekday().succ());
+    let last_week = raw_data.week(0);
+    data.start_time(&last_week)
+        .end_time(&last_week)
+        .total_time(&last_week)
+        .average_time(raw_data);
+
+    // format data
+    let mut table = Table::init(data.to_rows());
+    table.set_titles(row![raw_data.name]);
+    table.printstd();
+    println!();
 }
 
 /// Memorizza i dati relativi ad una attività
@@ -97,8 +102,8 @@ impl RawData {
     fn from_file(file: &PathBuf) -> Vec<Self> {
         let file = OpenOptions::new().read(true).open(file).unwrap();
 
-        let reader = BufReader::new(file).lines();
-        let mut res = reader
+        let mut res = BufReader::new(file)
+            .lines()
             .map(|line| {
                 let line = line.unwrap();
                 let words = line.split_whitespace().collect::<Vec<_>>();
@@ -116,15 +121,14 @@ impl RawData {
         res.iter_mut().for_each(|x| {
             if x.start_time.len() > x.end_time.len() {
                 x.end_time.push(Local::now());
-                x.day();
             }
+            x.day();
         });
         res
     }
 
     fn day(&mut self) {
         let mut i = 0;
-        println!("{}", self.name);
         while i < self.start_time.len() {
             if self.start_time[i].weekday() != self.end_time[i].weekday() {
                 // spezzo lo studio nei giorni che lo compongono
@@ -136,12 +140,6 @@ impl RawData {
                 self.end_time.insert(i, end);
                 self.start_time.insert(i + 1, start);
             }
-            let form = "%H:%M";
-            println!(
-                "{} - {}",
-                self.start_time[i].format(form),
-                self.end_time[i].format(form)
-            );
             i += 1;
         }
     }
@@ -206,7 +204,6 @@ impl DataOnTime {
             }
             self.w = self.w.succ();
         });
-        println!();
         self
     }
 

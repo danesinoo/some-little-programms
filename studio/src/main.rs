@@ -18,7 +18,7 @@ fn main() {
         } else {
             match arg1.as_ref() {
                 "info" => {
-                    display_info();
+                    display_info(env::args().nth(2).as_deref().unwrap_or("all"));
                 }
                 "help" | "-h" | "--help" => {
                     print_help();
