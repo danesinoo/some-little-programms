@@ -160,11 +160,12 @@ impl RawData {
             .start_time
             .iter()
             .position(cond1)
-            .unwrap_or(self.start_time.len() - 1);
+            .unwrap_or(self.start_time.len());
+
         let to = self.end_time[from..]
             .iter()
             .position(cond2)
-            .unwrap_or(self.end_time.len());
+            .unwrap_or(self.start_time.len());
 
         if from == to {
             return RawData::new(&self.name);

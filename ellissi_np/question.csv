@@ -1,0 +1,25 @@
+Item_Type,Verb_Type,Identity_Type,Structure,Word_Order,Depicted_Object,Gender,Number,Truth_Value,Sentence
+Warm-Up,leccare,Identity,Full DP,SVO,ghiacciolo,M,1,T,Il panda lecca il ghiacciolo rosso
+Warm-Up,leccare,Non-Identity,Full DP,SVO,ciuccio,M,2,F,Il panda lecca il ghiacciolo rosso
+Test Item,lavare,Identity,Topic,OVS,macchina,F,3,T,"L'elefante lava la macchina rossa. Quella azzurra, la lava il leone"
+Test Item,dipingere,Non-identity,Focus,SVO,foglia,F,4,F,Il gatto dipinge la mela gialla. Il cane dipinge quella rossa
+Filler,asciugare,Identity,Clitic Left Dislocation,OVS,sedia,F,5,T,"La sedia bianca, la asciuga la scimmia"
+Test Item,pulire,Identity,Focus,SVO,tavolo,M,6,T,La tigre pulisce il tavolo bianco. La pecora pulisce quello nero
+Control Ellipsis,raccogliere,Non-Identity,Coordination Ellipsis,SVO,mela,F,7,F,Il coniglio raccoglie la foglia rossa e quella gialla
+Test Item,catturare,Non-identity,Topic,OVS,stella,F,8,F,"Il leone cattura la farfalla azzurra. Quella gialla, la cattura l'orso"
+Filler,alzare,Identity,Coordination DP ADJ,SVO,valigia,F,9,T,L'ippopotamo alza la valigia azzurra e la valigia gialla
+Test Item,fotografare,Identity,Topic,OVS,palloncino,M,10,T,"La volpe fotografa il palloncino azzurro. Quello giallo, lo fotografa la scimmia"
+Test Item,prendere,Non-identity,Focus,SVO,secchio,M,11,F,La pecora prende il fiore rosso. La volpe prende quello azzurro
+Filler,disegnare,Non-Identity,Clitic Left Dislocation,OVS,palloncino,M,12,F,"L'ombrello rosso, lo disegna la tigre"
+Control Ellipsis,portare,Identity,Coordination Ellipsis,SVO,bicchiere,M,13,T,Il gatto porta il bicchiere giallo e quello azzurro
+Test Item,dipingere,Identity,Focus,SVO,mela,F,14,T,Il gatto dipinge la mela gialla. Il cane dipinge quella rossa
+Test Item,fotografare,Non-identity,Topic,OVS,aquilone,M,15,F,"La volpe fotografa il palloncino azzurro. Quello giallo, lo fotografa la scimmia"
+Filler,disegnare,Identity,Clitic Left Dislocation,OVS,ombrello,M,16,T,"L'ombrello rosso, lo disegna la tigre"
+Test Item,lavare,Non-identity,Focus,SVO,bicicletta,F,17,F,L'elefante lava la macchina rossa. Il leone lava quella azzurra 
+Control Ellipsis,raccogliere,Identity,Coordination Ellipsis,SVO,foglia,F,18,T,Il coniglio raccoglie la foglia rossa e quella gialla
+Filler,alzare,Non-Identity,Cooordination DP ADJ,SVO,borsa,F,19,F,L'ippopotamo alza la valigia azzurra e la valigia gialla
+Test Item,prendere,Identity,Topic,OVS,fiore,M,20,T,"La pecora prende il fiore rosso. Quello azzurro, lo prende la volpe"
+Test Item,pulire,Non-identity,Topic,OVS,divano,M,21,F,"La tigre pulisce il tavolo bianco. Quello nero, lo pulisce la pecora "
+Filler,asciugare,Non-Identity,Clitic Left Dislocation,OVS,vasca,F,22,F,"La sedia bianca, la asciuga la scimmia"
+Test Item,catturare,Identity,Focus,SVO,farfalla,F,23,T,Il leone cattura la farfalla azzurra. L'orso cattura quella gialla
+Control Ellipsis,portare,Non-Identity,Coordination Ellipsis,SVO,piatto,M,24,F,Il gatto porta il bicchiere giallo e quello azzurro

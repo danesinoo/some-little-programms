@@ -1,0 +1,265 @@
+Name,Born Date,Age,Age_Group,Sex,Testing Date,List,Item,Identity_Type,Structure_Type,Word Order,Verb,Number,Truth_Value
+Agata Garghella,9/2/2017,5;10,Age 5,F,28/12/2022,1,Warm-Up,Identity,Full DP,SVO,leccare,1,T
+Agata Garghella,9/2/2017,5;10,Age 5,F,28/12/2022,1,Warm-Up,Non-Identity,Full DP,SVO,leccare,2,F
+Agata Garghella,9/2/2017,5;10,Age 5,F,28/12/2022,1,Test Item,Identity,Topic,OVS,lavare,3,T
+Agata Garghella,9/2/2017,5;10,Age 5,F,28/12/2022,1,Test Item,Non-identity,Focus,SVO,dipingere,4,F
+Agata Garghella,9/2/2017,5;10,Age 5,F,28/12/2022,1,Filler,Identity,CLLD,OVS,asciugare,5,T
+Agata Garghella,9/2/2017,5;10,Age 5,F,28/12/2022,1,Test Item,Identity,Focus,SVO,pulire,6,T
+Agata Garghella,9/2/2017,5;10,Age 5,F,28/12/2022,1,Control Ellipsis,Non-Identity,Coordination Ellipsis,OVS,raccogliere,7,F
+Agata Garghella,9/2/2017,5;10,Age 5,F,28/12/2022,1,Test Item,Non-identity,Topic,OVS,catturare,8,F
+Agata Garghella,9/2/2017,5;10,Age 5,F,28/12/2022,1,Filler,Identity,Coordination DP ADJ,SVO,alzare,9,T
+Agata Garghella,9/2/2017,5;10,Age 5,F,28/12/2022,1,Test Item,Identity,Topic,OVS,fotografare,10,T
+Agata Garghella,9/2/2017,5;10,Age 5,F,28/12/2022,1,Test Item,Non-identity,Focus,SVO,prendere,11,F
+Agata Garghella,9/2/2017,5;10,Age 5,F,28/12/2022,1,Filler,Non-Identity,CLLD,OVS,disegnare,12,F
+Agata Garghella,9/2/2017,5;10,Age 5,F,28/12/2022,1,Control Ellipsis,Identity,Coordination Ellipsis,SVO,raccogliere,13,T
+Agata Garghella,9/2/2017,5;10,Age 5,F,28/12/2022,1,Test Item,Identity,Focus,SVO,dipingere,14,T
+Agata Garghella,9/2/2017,5;10,Age 5,F,28/12/2022,1,Test Item,Non-identity,Topic,OVS,fotografare,15,F
+Agata Garghella,9/2/2017,5;10,Age 5,F,28/12/2022,1,Filler,Identity,CLLD,OVS,disegnare,16,T
+Agata Garghella,9/2/2017,5;10,Age 5,F,28/12/2022,1,Test Item,Non-identity,Focus,SVO,lavare,17,F
+Agata Garghella,9/2/2017,5;10,Age 5,F,28/12/2022,1,Control Ellipsis,Identity,Coordination Ellipsis,SVO,portare,18,T
+Agata Garghella,9/2/2017,5;10,Age 5,F,28/12/2022,1,Filler,Non-Identity,Cooordination DP ADJ,SVO,alzare,19,F
+Agata Garghella,9/2/2017,5;10,Age 5,F,28/12/2022,1,Test Item,Identity,Topic,OVS,prendere,20,T
+Agata Garghella,9/2/2017,5;10,Age 5,F,28/12/2022,1,Test Item,Non-identity,Topic,OVS,pulire,21,F
+Agata Garghella,9/2/2017,5;10,Age 5,F,28/12/2022,1,Filler,Non-Identity,CLLD,OVS,asciugare,22,F
+Agata Garghella,9/2/2017,5;10,Age 5,F,28/12/2022,1,Test Item,Identity,Focus,SVO,catturare,23,T
+Agata Garghella,9/2/2017,5;10,Age 5,F,28/12/2022,1,Control Ellipsis,Non-Identity,Coordination Ellipsis,SVO,portare,24,F
+Agnese Garghella,8/6/2019,3;6,Age 3,F,4/1/2023,2,Warm-Up,Identity,Full DP,SVO,leccare,1,T
+Agnese Garghella,8/6/2019,3;6,Age 3,F,4/1/2023,2,Warm-Up,Non-Identity,Full DP,SVO,leccare,2,F
+Agnese Garghella,8/6/2019,3;6,Age 3,F,4/1/2023,2,Test Item,Identity,Topic,OVS,dipingere,3,T
+Agnese Garghella,8/6/2019,3;6,Age 3,F,4/1/2023,2,Test Item,Non-identity,Focus,SVO,fotografare,4,F
+Agnese Garghella,8/6/2019,3;6,Age 3,F,4/1/2023,2,Filler,Identity,CLLD,OVS,asciugare,5,T
+Agnese Garghella,8/6/2019,3;6,Age 3,F,4/1/2023,2,Test Item,Identity,Focus,SVO,prendere,6,T
+Agnese Garghella,8/6/2019,3;6,Age 3,F,4/1/2023,2,Control Ellipsis,Non-Identity,Coordination Ellipsis,OVS,raccogliere,7,F
+Agnese Garghella,8/6/2019,3;6,Age 3,F,4/1/2023,2,Test Item,Non-identity,Topic,OVS,lavare,8,T
+Agnese Garghella,8/6/2019,3;6,Age 3,F,4/1/2023,2,Filler,Identity,Coordination DP ADJ,SVO,alzare,9,T
+Agnese Garghella,8/6/2019,3;6,Age 3,F,4/1/2023,2,Test Item,Identity,Topic,OVS,catturare,10,F
+Agnese Garghella,8/6/2019,3;6,Age 3,F,4/1/2023,2,Test Item,Non-identity,Focus,SVO,pulire,11,F
+Agnese Garghella,8/6/2019,3;6,Age 3,F,4/1/2023,2,Filler,Non-Identity,CLLD,OVS,disegnare,12,F
+Agnese Garghella,8/6/2019,3;6,Age 3,F,4/1/2023,2,Control Ellipsis,Identity,Coordination Ellipsis,SVO,raccogliere,13,T
+Agnese Garghella,8/6/2019,3;6,Age 3,F,4/1/2023,2,Test Item,Identity,Focus,SVO,fotografare,14,F
+Agnese Garghella,8/6/2019,3;6,Age 3,F,4/1/2023,2,Test Item,Non-identity,Topic,OVS,dipingere,15,F
+Agnese Garghella,8/6/2019,3;6,Age 3,F,4/1/2023,2,Filler,Identity,CLLD,OVS,disegnare,16,T
+Agnese Garghella,8/6/2019,3;6,Age 3,F,4/1/2023,2,Test Item,Non-identity,Focus,SVO,catturare,17,T
+Agnese Garghella,8/6/2019,3;6,Age 3,F,4/1/2023,1,Control Ellipsis,Identity,Coordination Ellipsis,SVO,portare,18,T
+Agnese Garghella,8/6/2019,3;6,Age 3,F,4/1/2023,2,Filler,Non-Identity,Cooordination DP ADJ,SVO,alzare,18,F
+Agnese Garghella,8/6/2019,3;6,Age 3,F,4/1/2023,2,Test Item,Identity,Topic,OVS,pulire,19,T
+Agnese Garghella,8/6/2019,3;6,Age 3,F,4/1/2023,2,Test Item,Non-identity,Topic,OVS,prendere,20,F
+Agnese Garghella,8/6/2019,3;6,Age 3,F,4/1/2023,2,Filler,Non-Identity,CLLD,OVS,asciugare,21,F
+Agnese Garghella,8/6/2019,3;6,Age 3,F,4/1/2023,2,Test Item,Identity,Focus,SVO,lavare,22,T
+Agnese Garghella,8/6/2019,3;6,Age 3,F,4/1/2023,2,Control Ellipsis,Non-Identity,Coordination Ellipsis,SVO,portare,24,F
+Ettore Anglisani,9/11/2019,3;3,Age 3 ,M,11/1/2023,2,Warm-Up,Identity,Full DP,SVO,leccare,1,T
+Ettore Anglisani,9/11/2019,3;3,Age 3 ,M,11/1/2023,2,Warm-Up,Non-Identity,Full DP,SVO,leccare,2,F
+Ettore Anglisani,9/11/2019,3;3,Age 3 ,M,11/1/2023,2,Test Item,Identity,Topic,OVS,dipingere,3,F
+Ettore Anglisani,9/11/2019,3;3,Age 3 ,M,11/1/2023,2,Test Item,Non-identity,Focus,SVO,fotografare,4,F
+Ettore Anglisani,9/11/2019,3;3,Age 3 ,M,11/1/2023,2,Filler,Identity,Clitic Left Dislocation,OVS,asciugare,5,-
+Ettore Anglisani,9/11/2019,3;3,Age 3 ,M,11/1/2023,2,Test Item,Identity,Focus,SVO,prendere,6,T
+Ettore Anglisani,9/11/2019,3;3,Age 3 ,M,11/1/2023,2,Control Ellipsis,Non-Identity,Coordination Ellipsis,OVS,raccogliere,7,-
+Ettore Anglisani,9/11/2019,3;3,Age 3 ,M,11/1/2023,2,Test Item,Non-identity,Topic,OVS,lavare,8,F
+Ettore Anglisani,9/11/2019,3;3,Age 3 ,M,11/1/2023,2,Filler,Identity,Cooordination DP ADJ,SVO,alzare,9,F
+Ettore Anglisani,9/11/2019,3;3,Age 3 ,M,11/1/2023,2,Test Item,Identity,Topic,OVS,catturare,10,F
+Ettore Anglisani,9/11/2019,3;3,Age 3 ,M,11/1/2023,2,Test Item,Non-identity,Focus,SVO,pulire,11,F
+Ettore Anglisani,9/11/2019,3;3,Age 3 ,M,11/1/2023,2,Filler,Non-Identity,Clitic Left Dislocation,OVS,disegnare,12,F
+Ettore Anglisani,9/11/2019,3;3,Age 3 ,M,11/1/2023,2,Control Ellipsis,Identity,Coordination Ellipsis,SVO,portare,13,F
+Ettore Anglisani,9/11/2019,3;3,Age 3 ,M,11/1/2023,2,Test Item,Identity,Focus,SVO,fotografare,14,F
+Ettore Anglisani,9/11/2019,3;3,Age 3 ,M,11/1/2023,2,Test Item,Non-identity,Topic,OVS,dipingere,15,F
+Ettore Anglisani,9/11/2019,3;3,Age 3 ,M,11/1/2023,2,Filler,Identity,Clitic Left Dislocation,OVS,disegnare,16,T
+Ettore Anglisani,9/11/2019,3;3,Age 3 ,M,11/1/2023,2,Test Item,Non-identity,Focus,SVO,catturare,17,F
+Ettore Anglisani,9/11/2019,3;3,Age 3 ,M,11/1/2023,2,Control Ellipsis,Identity,Coordination Ellipsis,SVO,raccogliere,18,F
+Ettore Anglisani,9/11/2019,3;3,Age 3 ,M,11/1/2023,2,Filler,Non-Identity,Cooordination DP ADJ,SVO,alzare,19,F
+Ettore Anglisani,9/11/2019,3;3,Age 3 ,M,11/1/2023,2,Test Item,Identity,Topic,OVS,pulire,20,F
+Ettore Anglisani,9/11/2019,3;3,Age 3 ,M,11/1/2023,2,Test Item,Non-identity,Topic,OVS,prendere,21,F
+Ettore Anglisani,9/11/2019,3;3,Age 3 ,M,11/1/2023,2,Filler,Non-Identity,Clitic Left Dislocation,OVS,asciugare,22,F
+Ettore Anglisani,9/11/2019,3;3,Age 3 ,M,11/1/2023,2,Test Item,Identity,Focus,SVO,lavare,23,F
+Ettore Anglisani,9/11/2019,3;3,Age 3 ,M,11/1/2023,2,Control Ellipsis,Non-Identity,Coordination Ellipsis,SVO,portare,24,F
+Luca Anselmi,20/7/2017,5;6,Age 5,M,11/1/2023,2,Warm-Up,Identity,Full DP,SVO,leccare,1,T
+Luca Anselmi,20/7/2017,5;6,Age 5,M,11/1/2023,2,Warm-Up,Non-Identity,Full DP,SVO,leccare,2,F
+Luca Anselmi,20/7/2017,5;6,Age 5,M,11/1/2023,2,Test Item,Identity,Topic,OVS,dipingere,3,T
+Luca Anselmi,20/7/2017,5;6,Age 5,M,11/1/2023,2,Test Item,Non-identity,Focus,SVO,fotografare,4,T
+Luca Anselmi,20/7/2017,5;6,Age 5,M,11/1/2023,2,Filler,Identity,Clitic Left Dislocation,OVS,asciugare,5,T
+Luca Anselmi,20/7/2017,5;6,Age 5,M,11/1/2023,2,Test Item,Identity,Focus,SVO,prendere,6,T
+Luca Anselmi,20/7/2017,5;6,Age 5,M,11/1/2023,2,Control Ellipsis,Non-Identity,Coordination Ellipsis,OVS,raccogliere,7,T
+Luca Anselmi,20/7/2017,5;6,Age 5,M,11/1/2023,2,Test Item,Non-identity,Topic,OVS,lavare,8,T
+Luca Anselmi,20/7/2017,5;6,Age 5,M,11/1/2023,2,Filler,Identity,Cooordination DP ADJ,SVO,alzare,9,T
+Luca Anselmi,20/7/2017,5;6,Age 5,M,11/1/2023,2,Test Item,Identity,Topic,OVS,catturare,10,T
+Luca Anselmi,20/7/2017,5;6,Age 5,M,11/1/2023,2,Test Item,Non-identity,Focus,SVO,pulire,11,T
+Luca Anselmi,20/7/2017,5;6,Age 5,M,11/1/2023,2,Filler,Non-Identity,Clitic Left Dislocation,OVS,disegnare,12,F
+Luca Anselmi,20/7/2017,5;6,Age 5,M,11/1/2023,2,Control Ellipsis,Identity,Coordination Ellipsis,SVO,portare,13,T
+Luca Anselmi,20/7/2017,5;6,Age 5,M,11/1/2023,2,Test Item,Identity,Focus,SVO,fotografare,14,T
+Luca Anselmi,20/7/2017,5;6,Age 5,M,11/1/2023,2,Test Item,Non-identity,Topic,OVS,dipingere,15,F
+Luca Anselmi,20/7/2017,5;6,Age 5,M,11/1/2023,2,Filler,Identity,Clitic Left Dislocation,OVS,disegnare,16,T
+Luca Anselmi,20/7/2017,5;6,Age 5,M,11/1/2023,2,Test Item,Non-identity,Focus,SVO,catturare,17,F
+Luca Anselmi,20/7/2017,5;6,Age 5,M,11/1/2023,2,Control Ellipsis,Identity,Coordination Ellipsis,SVO,raccogliere,18,V
+Luca Anselmi,20/7/2017,5;6,Age 5,M,11/1/2023,2,Filler,Non-Identity,Cooordination DP ADJ,SVO,alzare,19,F
+Luca Anselmi,20/7/2017,5;6,Age 5,M,11/1/2023,2,Test Item,Identity,Topic,OVS,pulire,20,T
+Luca Anselmi,20/7/2017,5;6,Age 5,M,11/1/2023,2,Test Item,Non-identity,Topic,OVS,prendere,21,F
+Luca Anselmi,20/7/2017,5;6,Age 5,M,11/1/2023,2,Filler,Non-Identity,Clitic Left Dislocation,OVS,asciugare,22,F
+Luca Anselmi,20/7/2017,5;6,Age 5,M,11/1/2023,2,Test Item,Identity,Focus,SVO,lavare,23,T
+Luca Anselmi,20/7/2017,5;6,Age 5,M,11/1/2023,2,Control Ellipsis,Non-Identity,Coordination Ellipsis,SVO,portare,24,F
+Anna Duka,22/10/2017,5;2,Age 5,F,11/1/2023,1,Warm-Up,Identity,Full DP,SVO,leccare,1,T
+Anna Duka,22/10/2017,5;2,Age 5,F,11/1/2023,1,Warm-Up,Non-Identity,Full DP,SVO,leccare,2,F
+Anna Duka,22/10/2017,5;2,Age 5,F,11/1/2023,1,Test Item,Identity,Topic,OVS,lavare,3,T
+Anna Duka,22/10/2017,5;2,Age 5,F,11/1/2023,1,Test Item,Non-identity,Focus,SVO,dipingere,4,T
+Anna Duka,22/10/2017,5;2,Age 5,F,11/1/2023,1,Filler,Identity,Clitic Left Dislocation,OVS,asciugare,5,T
+Anna Duka,22/10/2017,5;2,Age 5,F,11/1/2023,1,Test Item,Identity,Focus,SVO,pulire,6,T
+Anna Duka,22/10/2017,5;2,Age 5,F,11/1/2023,1,Control Ellipsis,Non-Identity,Coordination Ellipsis,SVO,raccogliere,7,T
+Anna Duka,22/10/2017,5;2,Age 5,F,11/1/2023,1,Test Item,Non-identity,Topic,OVS,catturare,8,T
+Anna Duka,22/10/2017,5;2,Age 5,F,11/1/2023,1,Filler,Identity,Coordination DP ADJ,SVO,alzare,9,T
+Anna Duka,22/10/2017,5;2,Age 5,F,11/1/2023,1,Test Item,Identity,Topic,OVS,fotografare,10,T
+Anna Duka,22/10/2017,5;2,Age 5,F,11/1/2023,1,Test Item,Non-identity,Focus,SVO,prendere,11,T
+Anna Duka,22/10/2017,5;2,Age 5,F,11/1/2023,1,Filler,Non-Identity,Clitic Left Dislocation,OVS,disegnare,12,F
+Anna Duka,22/10/2017,5;2,Age 5,F,11/1/2023,1,Control Ellipsis,Identity,Coordination Ellipsis,SVO,portare,13,T
+Anna Duka,22/10/2017,5;2,Age 5,F,11/1/2023,1,Test Item,Identity,Focus,SVO,dipingere,14,T
+Anna Duka,22/10/2017,5;2,Age 5,F,11/1/2023,1,Test Item,Non-identity,Topic,OVS,fotografare,15,F
+Anna Duka,22/10/2017,5;2,Age 5,F,11/1/2023,1,Filler,Identity,Clitic Left Dislocation,OVS,disegnare,16,T
+Anna Duka,22/10/2017,5;2,Age 5,F,11/1/2023,1,Test Item,Non-identity,Focus,SVO,lavare,17,F
+Anna Duka,22/10/2017,5;2,Age 5,F,11/1/2023,1,Control Ellipsis,Identity,Coordination Ellipsis,SVO,raccogliere,18,T
+Anna Duka,22/10/2017,5;2,Age 5,F,11/1/2023,1,Filler,Non-Identity,Cooordination DP ADJ,SVO,alzare,19,F
+Anna Duka,22/10/2017,5;2,Age 5,F,11/1/2023,1,Test Item,Identity,Topic,OVS,prendere,20,T
+Anna Duka,22/10/2017,5;2,Age 5,F,11/1/2023,1,Test Item,Non-identity,Topic,OVS,pulire,21,F
+Anna Duka,22/10/2017,5;2,Age 5,F,11/1/2023,1,Filler,Non-Identity,Clitic Left Dislocation,OVS,asciugare,22,F
+Anna Duka,22/10/2017,5;2,Age 5,F,11/1/2023,1,Test Item,Identity,Focus,SVO,catturare,23,T
+Anna Duka,22/10/2017,5;2,Age 5,F,11/1/2023,1,Control Ellipsis,Non-Identity,Coordination Ellipsis,SVO,portare,24,F
+Cesare Varotto,19/6/2017,5;6,Age 5 ,M,11/1/2023,1,#NAME?,#NAME?,#NAME?,#NAME?,#NAME?,1,T
+Cesare Varotto,19/6/2017,5;6,Age 5 ,M,11/1/2023,1,,,,,,2,F
+Cesare Varotto,19/6/2017,5;6,Age 5 ,M,11/1/2023,1,,,,,,3,T
+Cesare Varotto,19/6/2017,5;6,Age 5 ,M,11/1/2023,1,,,,,,4,T
+Cesare Varotto,19/6/2017,5;6,Age 5 ,M,11/1/2023,1,,,,,,5,T
+Cesare Varotto,19/6/2017,5;6,Age 5 ,M,11/1/2023,1,,,,,,6,T
+Cesare Varotto,19/6/2017,5;6,Age 5 ,M,11/1/2023,1,,,,,,7,F
+Cesare Varotto,19/6/2017,5;6,Age 5 ,M,11/1/2023,1,,,,,,8,T
+Cesare Varotto,19/6/2017,5;6,Age 5 ,M,11/1/2023,1,,,,,,9,T
+Cesare Varotto,19/6/2017,5;6,Age 5 ,M,11/1/2023,1,,,,,,10,T
+Cesare Varotto,19/6/2017,5;6,Age 5 ,M,11/1/2023,1,,,,,,11,T
+Cesare Varotto,19/6/2017,5;6,Age 5 ,M,11/1/2023,1,,,,,,12,F
+Cesare Varotto,19/6/2017,5;6,Age 5 ,M,11/1/2023,1,,,,,,13,T
+Cesare Varotto,19/6/2017,5;6,Age 5 ,M,11/1/2023,1,,,,,,14,T
+Cesare Varotto,19/6/2017,5;6,Age 5 ,M,11/1/2023,1,,,,,,15,F
+Cesare Varotto,19/6/2017,5;6,Age 5 ,M,11/1/2023,1,,,,,,16,T
+Cesare Varotto,19/6/2017,5;6,Age 5 ,M,11/1/2023,1,,,,,,17,F
+Cesare Varotto,19/6/2017,5;6,Age 5 ,M,11/1/2023,1,,,,,,18,T
+Cesare Varotto,19/6/2017,5;6,Age 5 ,M,11/1/2023,1,,,,,,19,F
+Cesare Varotto,19/6/2017,5;6,Age 5 ,M,11/1/2023,1,,,,,,20,T
+Cesare Varotto,19/6/2017,5;6,Age 5 ,M,11/1/2023,1,,,,,,21,F
+Cesare Varotto,19/6/2017,5;6,Age 5 ,M,11/1/2023,1,,,,,,22,F
+Cesare Varotto,19/6/2017,5;6,Age 5 ,M,11/1/2023,1,,,,,,23,T
+Cesare Varotto,19/6/2017,5;6,Age 5 ,M,11/1/2023,1,,,,,,24,F
+Diego Zangrandi,15/12/2017,5,Age 5,M,13/1/2023,1,#NAME?,#NAME?,#NAME?,#NAME?,#NAME?,1,T
+Diego Zangrandi,15/12/2017,5,Age 5,M,13/1/2023,1,,,,,,2,F
+Diego Zangrandi,15/12/2017,5,Age 5,M,13/1/2023,1,,,,,,3,T
+Diego Zangrandi,15/12/2017,5,Age 5,M,13/1/2023,1,,,,,,4,T
+Diego Zangrandi,15/12/2017,5,Age 5,M,13/1/2023,1,,,,,,5,T
+Diego Zangrandi,15/12/2017,5,Age 5,M,13/1/2023,1,,,,,,6,T
+Diego Zangrandi,15/12/2017,5,Age 5,M,13/1/2023,1,,,,,,7,F
+Diego Zangrandi,15/12/2017,5,Age 5,M,13/1/2023,1,,,,,,8,F
+Diego Zangrandi,15/12/2017,5,Age 5,M,13/1/2023,1,,,,,,9,T
+Diego Zangrandi,15/12/2017,5,Age 5,M,13/1/2023,1,,,,,,10,T
+Diego Zangrandi,15/12/2017,5,Age 5,M,13/1/2023,1,,,,,,11,T
+Diego Zangrandi,15/12/2017,5,Age 5,M,13/1/2023,1,,,,,,12,T
+Diego Zangrandi,15/12/2017,5,Age 5,M,13/1/2023,1,,,,,,13,T
+Diego Zangrandi,15/12/2017,5,Age 5,M,13/1/2023,1,,,,,,14,F
+Diego Zangrandi,15/12/2017,5,Age 5,M,13/1/2023,1,,,,,,15,T
+Diego Zangrandi,15/12/2017,5,Age 5,M,13/1/2023,1,,,,,,16,T
+Diego Zangrandi,15/12/2017,5,Age 5,M,13/1/2023,1,,,,,,17,T
+Diego Zangrandi,15/12/2017,5,Age 5,M,13/1/2023,1,,,,,,18,T
+Diego Zangrandi,15/12/2017,5,Age 5,M,13/1/2023,1,,,,,,19,F
+Diego Zangrandi,15/12/2017,5,Age 5,M,13/1/2023,1,,,,,,20,T
+Diego Zangrandi,15/12/2017,5,Age 5,M,13/1/2023,1,,,,,,21,F
+Diego Zangrandi,15/12/2017,5,Age 5,M,13/1/2023,1,,,,,,22,F
+Diego Zangrandi,15/12/2017,5,Age 5,M,13/1/2023,1,,,,,,23,T
+Diego Zangrandi,15/12/2017,5,Age 5,M,13/1/2023,1,,,,,,24,F
+Benedetta Zorzan,26/2/2018,4;10,Age 4,F,13/1/2023,2,#NAME?,#NAME?,#NAME?,#NAME?,leccare,1,T
+Benedetta Zorzan,26/2/2018,4;10,Age 4,F,13/1/2023,2,,,,,leccare,2,F
+Benedetta Zorzan,26/2/2018,4;10,Age 4,F,13/1/2023,2,,,,,dipingere,3,T
+Benedetta Zorzan,26/2/2018,4;10,Age 4,F,13/1/2023,2,,,,,fotografare,4,F
+Benedetta Zorzan,26/2/2018,4;10,Age 4,F,13/1/2023,2,,,,,asciugare,5,T
+Benedetta Zorzan,26/2/2018,4;10,Age 4,F,13/1/2023,2,,,,,prendere,6,T
+Benedetta Zorzan,26/2/2018,4;10,Age 4,F,13/1/2023,2,,,,,raccogliere,7,F
+Benedetta Zorzan,26/2/2018,4;10,Age 4,F,13/1/2023,2,,,,,lavare,8,F
+Benedetta Zorzan,26/2/2018,4;10,Age 4,F,13/1/2023,2,,,,,alzare,9,T
+Benedetta Zorzan,26/2/2018,4;10,Age 4,F,13/1/2023,2,,,,,catturare,10,T
+Benedetta Zorzan,26/2/2018,4;10,Age 4,F,13/1/2023,2,,,,,pulire,11,F
+Benedetta Zorzan,26/2/2018,4;10,Age 4,F,13/1/2023,2,,,,,disegnare,12,F
+Benedetta Zorzan,26/2/2018,4;10,Age 4,F,13/1/2023,2,,,,,portare,13,T
+Benedetta Zorzan,26/2/2018,4;10,Age 4,F,13/1/2023,2,,,,,fotografare,14,T
+Benedetta Zorzan,26/2/2018,4;10,Age 4,F,13/1/2023,2,,,,,dipingere,15,F
+Benedetta Zorzan,26/2/2018,4;10,Age 4,F,13/1/2023,2,,,,,disegnare,16,T
+Benedetta Zorzan,26/2/2018,4;10,Age 4,F,13/1/2023,2,,,,,catturare,17,F
+Benedetta Zorzan,26/2/2018,4;10,Age 4,F,13/1/2023,2,,,,,raccogliere,18,T
+Benedetta Zorzan,26/2/2018,4;10,Age 4,F,13/1/2023,2,,,,,alzare,19,F
+Benedetta Zorzan,26/2/2018,4;10,Age 4,F,13/1/2023,2,,,,,pulire,20,T
+Benedetta Zorzan,26/2/2018,4;10,Age 4,F,13/1/2023,2,,,,,prendere,21,F
+Benedetta Zorzan,26/2/2018,4;10,Age 4,F,13/1/2023,2,,,,,asciugare,22,F
+Benedetta Zorzan,26/2/2018,4;10,Age 4,F,13/1/2023,2,,,,,lavare,23,T
+Benedetta Zorzan,26/2/2018,4;10,Age 4,F,13/1/2023,2,,,,,portare,24,F
+Marta Corvetti,1/5/2018,4;8,Age 4,F,13/1/2023,1,#NAME?,#NAME?,#NAME?,#NAME?,leccare,1,T
+Marta Corvetti,1/5/2018,4;8,Age 4,F,13/1/2023,1,,,,,leccare,2,F
+Marta Corvetti,1/5/2018,4;8,Age 4,F,13/1/2023,1,,,,,lavare,3,T
+Marta Corvetti,1/5/2018,4;8,Age 4,F,13/1/2023,1,,,,,dipingere,4,T
+Marta Corvetti,1/5/2018,4;8,Age 4,F,13/1/2023,1,,,,,asciugare,5,T
+Marta Corvetti,1/5/2018,4;8,Age 4,F,13/1/2023,1,,,,,pulire,6,T
+Marta Corvetti,1/5/2018,4;8,Age 4,F,13/1/2023,1,,,,,raccogliere,7,T
+Marta Corvetti,1/5/2018,4;8,Age 4,F,13/1/2023,1,,,,,catturare,8,T
+Marta Corvetti,1/5/2018,4;8,Age 4,F,13/1/2023,1,,,,,alzare,9,T
+Marta Corvetti,1/5/2018,4;8,Age 4,F,13/1/2023,1,,,,,fotografare,10,T
+Marta Corvetti,1/5/2018,4;8,Age 4,F,13/1/2023,1,,,,,prendere,11,T
+Marta Corvetti,1/5/2018,4;8,Age 4,F,13/1/2023,1,,,,,disegnare,12,F
+Marta Corvetti,1/5/2018,4;8,Age 4,F,13/1/2023,1,,,,,portare,13,T
+Marta Corvetti,1/5/2018,4;8,Age 4,F,13/1/2023,1,,,,,dipingere,14,T
+Marta Corvetti,1/5/2018,4;8,Age 4,F,13/1/2023,1,,,,,fotografare,15,T
+Marta Corvetti,1/5/2018,4;8,Age 4,F,13/1/2023,1,,,,,disegnare,16,T
+Marta Corvetti,1/5/2018,4;8,Age 4,F,13/1/2023,1,,,,,lavare,17,T
+Marta Corvetti,1/5/2018,4;8,Age 4,F,13/1/2023,1,,,,,raccogliere,18,T
+Marta Corvetti,1/5/2018,4;8,Age 4,F,13/1/2023,1,,,,,alzare,19,T
+Marta Corvetti,1/5/2018,4;8,Age 4,F,13/1/2023,1,,,,,prendere,20,T
+Marta Corvetti,1/5/2018,4;8,Age 4,F,13/1/2023,1,,,,,pulire,21,T
+Marta Corvetti,1/5/2018,4;8,Age 4,F,13/1/2023,1,,,,,asciugare,22,T
+Marta Corvetti,1/5/2018,4;8,Age 4,F,13/1/2023,1,,,,,catturare,23,T
+Marta Corvetti,1/5/2018,4;8,Age 4,F,13/1/2023,1,,,,,portare,24,T
+Mila Bragadin,11/5/2019,3;8,Age 3,F,16/1/2023,2,#NAME?,#NAME?,#NAME?,#NAME?,#NAME?,1,F
+Mila Bragadin,11/5/2019,3;8,Age 3,F,16/1/2023,2,,,,,,2,F
+Mila Bragadin,11/5/2019,3;8,Age 3,F,16/1/2023,2,,,,,,3,T
+Mila Bragadin,11/5/2019,3;8,Age 3,F,16/1/2023,2,,,,,,4,T
+Mila Bragadin,11/5/2019,3;8,Age 3,F,16/1/2023,2,,,,,,5,T
+Mila Bragadin,11/5/2019,3;8,Age 3,F,16/1/2023,2,,,,,,6,T
+Mila Bragadin,11/5/2019,3;8,Age 3,F,16/1/2023,2,,,,,,7,T
+Mila Bragadin,11/5/2019,3;8,Age 3,F,16/1/2023,2,,,,,,8,T
+Mila Bragadin,11/5/2019,3;8,Age 3,F,16/1/2023,2,,,,,,9,T
+Mila Bragadin,11/5/2019,3;8,Age 3,F,16/1/2023,2,,,,,,10,F
+Mila Bragadin,11/5/2019,3;8,Age 3,F,16/1/2023,2,,,,,,11,F
+Mila Bragadin,11/5/2019,3;8,Age 3,F,16/1/2023,2,,,,,,12,F
+Mila Bragadin,11/5/2019,3;8,Age 3,F,16/1/2023,2,,,,,,13,F
+Mila Bragadin,11/5/2019,3;8,Age 3,F,16/1/2023,2,,,,,,14,T
+Mila Bragadin,11/5/2019,3;8,Age 3,F,16/1/2023,2,,,,,,15,F
+Mila Bragadin,11/5/2019,3;8,Age 3,F,16/1/2023,2,,,,,,16,F
+Mila Bragadin,11/5/2019,3;8,Age 3,F,16/1/2023,2,,,,,,17,F
+Mila Bragadin,11/5/2019,3;8,Age 3,F,16/1/2023,2,,,,,,18,T
+Mila Bragadin,11/5/2019,3;8,Age 3,F,16/1/2023,2,,,,,,19,F
+Mila Bragadin,11/5/2019,3;8,Age 3,F,16/1/2023,2,,,,,,20,F
+Mila Bragadin,11/5/2019,3;8,Age 3,F,16/1/2023,2,,,,,,21,F
+Mila Bragadin,11/5/2019,3;8,Age 3,F,16/1/2023,2,,,,,,22,T
+Mila Bragadin,11/5/2019,3;8,Age 3,F,16/1/2023,2,,,,,,23,F
+Mila Bragadin,11/5/2019,3;8,Age 3,F,16/1/2023,2,,,,,,24,F
+Matteo Contessa Ye,23/9/2019,3;3,Age 3,M,16/1/2023,2,#NAME?,#NAME?,#NAME?,#NAME?,#NAME?,1,F
+Matteo Contessa Ye,23/9/2019,3;3,Age 3,M,16/1/2023,2,,,,,,2,F
+Matteo Contessa Ye,23/9/2019,3;3,Age 3,M,16/1/2023,2,,,,,,3,T
+Matteo Contessa Ye,23/9/2019,3;3,Age 3,M,16/1/2023,2,,,,,,4,T
+Matteo Contessa Ye,23/9/2019,3;3,Age 3,M,16/1/2023,2,,,,,,5,T
+Matteo Contessa Ye,23/9/2019,3;3,Age 3,M,16/1/2023,2,,,,,,6,F
+Matteo Contessa Ye,23/9/2019,3;3,Age 3,M,16/1/2023,2,,,,,,7,F
+Matteo Contessa Ye,23/9/2019,3;3,Age 3,M,16/1/2023,2,,,,,,8,F
+Matteo Contessa Ye,23/9/2019,3;3,Age 3,M,16/1/2023,2,,,,,,9,F
+Matteo Contessa Ye,23/9/2019,3;3,Age 3,M,16/1/2023,2,,,,,,10,T
+Matteo Contessa Ye,23/9/2019,3;3,Age 3,M,16/1/2023,2,,,,,,11,T
+Matteo Contessa Ye,23/9/2019,3;3,Age 3,M,16/1/2023,2,,,,,,12,F
+Matteo Contessa Ye,23/9/2019,3;3,Age 3,M,16/1/2023,2,,,,,,13,F
+Matteo Contessa Ye,23/9/2019,3;3,Age 3,M,16/1/2023,2,,,,,,14,T
+Matteo Contessa Ye,23/9/2019,3;3,Age 3,M,16/1/2023,2,,,,,,15,T
+Matteo Contessa Ye,23/9/2019,3;3,Age 3,M,16/1/2023,2,,,,,,16,T
+Matteo Contessa Ye,23/9/2019,3;3,Age 3,M,16/1/2023,2,,,,,,17,F
+Matteo Contessa Ye,23/9/2019,3;3,Age 3,M,16/1/2023,2,,,,,,18,F
+Matteo Contessa Ye,23/9/2019,3;3,Age 3,M,16/1/2023,2,,,,,,19,F
+Matteo Contessa Ye,23/9/2019,3;3,Age 3,M,16/1/2023,2,,,,,,20,F
+Matteo Contessa Ye,23/9/2019,3;3,Age 3,M,16/1/2023,2,,,,,,21,F
+Matteo Contessa Ye,23/9/2019,3;3,Age 3,M,16/1/2023,2,,,,,,22,F
+Matteo Contessa Ye,23/9/2019,3;3,Age 3,M,16/1/2023,2,,,,,,23,T
+Matteo Contessa Ye,23/9/2019,3;3,Age 3,M,16/1/2023,2,,,,,,24,F
