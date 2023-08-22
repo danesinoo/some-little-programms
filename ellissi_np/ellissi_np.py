@@ -14,11 +14,24 @@ class Answer:
         self.Truth_Value = t_v
 
     def __str__(self):
-        return f"Answer({self.Year};{self.Month}, {self.Sex}, {self.Number}, {self.Truth_Value})"
+        return f"{self.Year};{self.Month}, {self.Number}, {self.Truth_Value}"
+
+
+class Question:
+    def __init__(self, i_t: str, s: str, w_o: str, n: int, t_v: bool):
+        self.Idenity_Type = i_t
+        self.Structure = s
+        self.Word_Order = w_o
+        self.Number = n
+        self.Truth_Value = t_v
+
+    def __str__(self):
+        return f"Question({self.Idenity_Type}, {self.Structure}, {self.Word_Order}, {self.Number}, {self.Truth_Value})"
 
 
 answers: list[Answer] = []
 questions = []
+
 
 # Open the CSV file
 with open("answer.csv", "r") as csv_file:
@@ -47,18 +60,6 @@ with open("answer.csv", "r") as csv_file:
 # answers is now populated
 
 
-class Question:
-    def __init__(self, i_t: str, s: str, w_o: str, n: int, t_v: bool):
-        self.Idenity_Type = i_t
-        self.Structure = s
-        self.Word_Order = w_o
-        self.Number = n
-        self.Truth_Value = t_v
-
-    def __str__(self):
-        return f"Question({self.Idenity_Type}, {self.Structure}, {self.Word_Order}, {self.Number}, {self.Truth_Value})"
-
-
 with open("question.csv", "r") as csv_file:
     csv_reader = csv.reader(csv_file)
 
@@ -78,6 +79,9 @@ with open("question.csv", "r") as csv_file:
 
 # Now we can start the analysis
 
+# answers: le risposte dei bambini
+# questions: le domande
+
 
 def filter(qs, anss, f):
     qs = [q.Number for q in qs if f(q)]
@@ -96,44 +100,91 @@ def group_by(anss, f):
     return grouped_answers
 
 
-a_1 = filter(questions, answers, lambda q: q.Idenity_Type == "Identity")
+# a_1 = filter(questions, answers, lambda q: q.Idenity_Type == "Identity")
 
-a_2 = group_by(a_1, lambda a: a.ID)
+question_4 = filter(questions, answers, lambda q: q.Number == 4)  # 4, 8, 11
+question_8 = filter(questions, answers, lambda q: q.Number == 8)
+question_11 = filter(questions, answers, lambda q: q.Number == 11)
 
 
-correctness = []
+def var(qs, anss):
+    a_2 = group_by(anss, lambda a: a.ID)
 
-for key in a_2:
-    correctness.append(
-        [
-            x.Truth_Value == q.Truth_Value
-            for x in a_2[key]
-            for q in questions
-            if x.Number == q.Number
-        ]
+    # for key in a_2:
+    #    print(key, len(a_2[key]))
+
+    correctness = []
+
+    for key in a_2:
+        correctness.append(
+            [
+                x.Truth_Value == q.Truth_Value
+                for x in a_2[key]
+                for q in qs
+                if x.Number == q.Number
+            ]
+        )
+
+    # for i in correctness:
+    #    for j in i:
+    #        if j:
+    #            print("Correct")
+    #        else:
+    #            print("Incorrect")
+    #    print()
+
+    correct_ans = []
+    for i in correctness:
+        correct_ans.append(reduce(lambda x, y: x + y, i))
+    #    print(correct_ans[-1])
+
+    # for i in correct_ans:
+    #    print(i / len(correctness[0])) # % di risposte corrette
+
+    media = reduce(lambda x, y: x + y, correct_ans) / len(correct_ans)
+    deviazione = reduce(lambda x, y: x + y, [(i - media) ** 2 for i in correct_ans]) / (
+        len(correct_ans) - 1
     )
-
-# for i in correctness:
-#    for j in i:
-#        if j:
-#            print("Correct")
-#        else:
-#            print("Incorrect")
-#    print()
-
-correct_ans = []
-for i in correctness:
-    correct_ans.append(reduce(lambda x, y: x + y, i))
-    # print(correct_ans[-1])
-
-# for i in correct_ans:
-#    print(i / len(correctness[0])) # % di risposte corrette
-
-media = reduce(lambda x, y: x + y, correct_ans) / len(correct_ans)
-deviazione = reduce(lambda x, y: x + y, [(i - media) ** 2 for i in correct_ans]) / len(
-    correct_ans
-)
+    return (media, deviazione)
 
 
-print("media: ", media)
-print("varianza: ", math.sqrt(deviazione))
+# self.Idenity_Type = i_t
+#        self.Structure = s
+#        self.Word_Order = w_o
+#        self.Number = n
+#        self.Truth_Value = t_v
+
+# print(mid_var(identity, answers))
+# print(mid_var(non_identity, answers))
+
+
+def print_group(qs, ans, type):
+    g2 = group_by(qs, type)
+    res = ""
+    for key in g2:
+        m, v = var(g2[key], ans)
+        print(
+            key, ":", format(m, ".2f"), "on", len(g2[key]), "; var:", format(v, ".2f")
+        )
+        res += f"{key},{format(m, '.2f')},{len(g2[key])},{format(v, '.2f')}\n"
+
+    with open("results.csv", "a") as f:
+        f.write(res)
+
+
+true = [q for q in questions if q.Truth_Value]
+false = [q for q in questions if not q.Truth_Value]
+
+
+print_group(questions, answers, lambda q: q.Structure)
+print_group(questions, answers, lambda q: q.Word_Order)
+print()
+
+print("True")
+print_group(true, answers, lambda q: q.Structure)
+print_group(true, answers, lambda q: q.Word_Order)
+print()
+
+print("False")
+print_group(false, answers, lambda q: q.Structure)
+print_group(false, answers, lambda q: q.Word_Order)
