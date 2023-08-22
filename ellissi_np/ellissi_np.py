@@ -135,5 +135,5 @@ deviazione = reduce(lambda x, y: x + y, [(i - media) ** 2 for i in correct_ans])
 )
 
 
-# print("media: ", media)
-# print("varianza: ", math.sqrt(deviazione))
+print("media: ", media)
+print("varianza: ", math.sqrt(deviazione))
