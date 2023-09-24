@@ -1,6 +1,6 @@
 use chrono::{DateTime, Datelike, Local, TimeZone, Timelike, Weekday};
 use home::home_dir;
-use prettytable::{row, Row, Table};
+use prettytable::{Row, Table};
 use std::fs::OpenOptions;
 use std::io::prelude::*;
 use std::io::BufReader;
@@ -25,6 +25,20 @@ pub fn display_info(name: &str) {
             display_data(raw_data);
         }
     });
+
+    let f = |x: u16| {
+        if x < 10 {
+            format!("0{}", x)
+        } else {
+            format!("{}", x)
+        }
+    };
+
+    println!(
+        "now: {}:{}",
+        f(Local::now().hour() as u16),
+        f(Local::now().minute() as u16)
+    );
     println!("Time elapsed: {:?}ms", now.elapsed());
 }
 
@@ -37,8 +51,8 @@ fn display_data(raw_data: &RawData) {
         .average_time(raw_data);
 
     // format data
-    let mut table = Table::init(data.to_rows());
-    table.set_titles(row![raw_data.name]);
+    println!("{}:", raw_data.name.to_ascii_uppercase());
+    let table = Table::init(data.to_rows());
     table.printstd();
     println!();
 }
@@ -259,17 +273,18 @@ impl DataOnTime {
 
         #[inline]
         fn add_row(table: &mut Vec<Row>, data: &[u16], title: &str) {
+            let f = |x: u16| {
+                if x < 10 {
+                    format!("0{}", x)
+                } else {
+                    format!("{}", x)
+                }
+            };
+
             table.push(Row::from(vec![title.to_string()].into_iter().chain(
                 data.iter().map(|x| {
                     let hour = x / 60;
                     let min = x % 60;
-                    let f = |x: u16| {
-                        if x < 10 {
-                            format!("0{}", x)
-                        } else {
-                            format!("{}", x)
-                        }
-                    };
                     format!("{}:{}", f(hour), f(min))
                 }),
             )));
