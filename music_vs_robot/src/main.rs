@@ -1,15 +1,36 @@
 mod entity {
+    pub mod consts;
     pub mod damage;
     pub mod enemy;
+    pub mod enemy_w_tool;
+    pub mod tool {
+        pub mod armor;
+        pub mod boots;
+        pub mod ring;
+        pub mod tool;
+        pub mod weapon;
+    }
+    pub mod player {
+        pub mod consts;
+        pub mod double_life;
+        pub mod player;
+        pub mod sample;
+        pub mod slow_down;
+        pub mod three_column;
+        pub mod three_row;
+    }
 }
 
 mod playground {
     pub mod cash;
+    pub mod playground;
+    pub mod playground_damage;
     pub mod timer;
 }
 
 mod util {
     pub mod observer;
+    pub mod observer_playground;
     pub mod visitor;
 }
 

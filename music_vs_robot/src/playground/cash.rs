@@ -8,7 +8,7 @@ pub trait Counter {
     fn sub(&mut self, n: u32);
 }
 
-struct Cash {
+pub struct Cash {
     obs: Vec<Box<dyn Observer>>,
     count: u32,
 }

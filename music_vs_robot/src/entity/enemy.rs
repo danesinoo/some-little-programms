@@ -1,12 +1,15 @@
-use crate::entity::damage::DamagePlayer;
+use crate::entity::damage::{Damage, DamagePlayer};
 use crate::util::visitor::{Visitable, Visitor};
 
-trait Enemy: Visitable {
-    fn suffer_damage(&mut self, damage: DamagePlayer) -> bool;
-    fn attack(&self) -> u32;
-    fn step(&self) -> u32;
+pub trait Enemy: Visitable {
+    fn suffer_damage(&mut self, damage: &mut DamagePlayer) -> bool;
+    fn attack(&mut self) -> u32;
+    fn step(&mut self) -> u32;
+    fn value(&self) -> u32;
+    fn is_dead(&self) -> bool;
 }
 
+#[derive(Clone)]
 pub struct EnemySimple {
     life: u32,
     attack: u32,
@@ -32,20 +35,35 @@ impl Visitable for EnemySimple {
 }
 
 impl Enemy for EnemySimple {
-    fn suffer_damage(&mut self, damage: DamagePlayer) -> bool {
-        todo!()
-        // need to implement cash
+    fn suffer_damage(&mut self, damage: &mut DamagePlayer) -> bool {
+        let d = damage.damage();
+        if d > self.life {
+            self.life = 0;
+            true
+        } else {
+            self.life -= d;
+            false
+        }
     }
 
-    fn attack(&self) -> u32 {
+    fn attack(&mut self) -> u32 {
         self.attack
     }
 
-    fn step(&self) -> u32 {
+    fn step(&mut self) -> u32 {
         self.step
+    }
+
+    fn value(&self) -> u32 {
+        self.value
+    }
+
+    fn is_dead(&self) -> bool {
+        self.life == 0
     }
 }
 
+#[derive(Clone)]
 pub struct EnemyDefense {
     life: u32,
     attack: u32,
@@ -71,21 +89,37 @@ impl Visitable for EnemyDefense {
 }
 
 impl Enemy for EnemyDefense {
-    fn suffer_damage(&mut self, damage: DamagePlayer) -> bool {
-        todo!()
-        // need to implement cash
+    fn suffer_damage(&mut self, damage: &mut DamagePlayer) -> bool {
+        *damage = *damage / DamagePlayer::new(2, 1, 2);
+        let d = damage.damage();
+        if d > self.life {
+            self.life = 0;
+            true
+        } else {
+            self.life -= d;
+            false
+        }
     }
 
-    fn attack(&self) -> u32 {
+    fn attack(&mut self) -> u32 {
         self.attack
     }
 
-    fn step(&self) -> u32 {
+    fn step(&mut self) -> u32 {
         self.step
+    }
+
+    fn value(&self) -> u32 {
+        self.value
+    }
+
+    fn is_dead(&self) -> bool {
+        self.life == 0
     }
 }
 
-struct EnemyBig {
+#[derive(Clone)]
+pub struct EnemyBig {
     life: u32,
     attack: u32,
     step: u32,
@@ -110,16 +144,30 @@ impl Visitable for EnemyBig {
 }
 
 impl Enemy for EnemyBig {
-    fn suffer_damage(&mut self, damage: DamagePlayer) -> bool {
-        todo!()
-        // need to implement cash
+    fn suffer_damage(&mut self, damage: &mut DamagePlayer) -> bool {
+        let d = damage.damage();
+        if d > self.life {
+            self.life = 0;
+            true
+        } else {
+            self.life -= d;
+            false
+        }
     }
 
-    fn attack(&self) -> u32 {
+    fn attack(&mut self) -> u32 {
         self.attack
     }
 
-    fn step(&self) -> u32 {
+    fn step(&mut self) -> u32 {
         self.step
+    }
+
+    fn value(&self) -> u32 {
+        self.value
+    }
+
+    fn is_dead(&self) -> bool {
+        self.life == 0
     }
 }

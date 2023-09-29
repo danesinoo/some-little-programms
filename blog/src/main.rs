@@ -8,16 +8,21 @@ fn main() -> Result<(), std::io::Error> {
     // create a file with the name of the date
     // if the file already exists, does nothing
 
-    let mut starter = "--- \nlayout: page\ntitle: ".to_owned();
+    let (arg, private) = match env::args().nth(1) {
+        Some(arg) => convert(&arg),
+        None => ("pagina".to_string(), false),
+    };
+
+    let mut starter = "--- \nlayout: page".to_owned();
+
+    if private {
+        starter += "-private";
+    }
+
+    starter += "\ntitle: ";
     starter += &chrono::Local::now().format("%d/%m").to_string();
     starter += "\ncategory: ";
-
     let mut date = chrono::Local::now().format("%Y-%m-%d").to_string();
-
-    let mut arg = "pagina".to_owned();
-    if let Some(arg1) = env::args().nth(1) {
-        arg = convert(&arg1);
-    }
 
     date = date.clone();
     starter = starter + &arg + "\n---\n\n";
@@ -41,12 +46,12 @@ fn main() -> Result<(), std::io::Error> {
     Ok(())
 }
 
-fn convert(arg: &str) -> String {
+fn convert(arg: &str) -> (String, bool) {
     match arg {
-        "page" | "diario" | "d" | "diary" => "pagina".to_string(),
-        "r" | "riflessione" | "riflessioni" | "private" => "riflessione".to_string(),
-        "p" | "pensiero" | "pensieri" | "public" => "pensiero".to_string(),
-        "poesia" | "poesie" | "poem" | "poems" => "poesia".to_string(),
-        _ => arg.to_string(),
+        "page" | "diario" | "d" | "diary" => ("pagina".to_string(), false),
+        "p" | "pensiero" | "pensieri" | "public" => ("pensiero".to_string(), false),
+        "poesia" | "poesie" | "poem" | "poems" => ("poesia".to_string(), false),
+        "r" | "riflessione" | "riflessioni" | "private" => ("riflessione".to_string(), true),
+        _ => (arg.to_string(), true),
     }
 }
