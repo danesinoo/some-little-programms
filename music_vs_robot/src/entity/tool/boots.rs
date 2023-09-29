@@ -1,6 +1,7 @@
 use crate::entity::tool::tool::Tool;
 use crate::util::visitor::{Visitable, Visitor};
 
+#[derive(Clone)]
 pub struct Boots {
     durability: u32,
     step: u32,
@@ -30,5 +31,9 @@ impl Tool for Boots {
             self.durability -= 1;
             self.step
         }
+    }
+
+    fn copy(&self) -> Box<dyn Tool> {
+        Box::new(self.clone())
     }
 }

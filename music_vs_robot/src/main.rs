@@ -23,8 +23,10 @@ mod entity {
 
 mod playground {
     pub mod cash;
+    pub mod consts;
     pub mod playground;
     pub mod playground_damage;
+    pub mod playground_enemy;
     pub mod timer;
 }
 

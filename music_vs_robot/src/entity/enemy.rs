@@ -7,6 +7,7 @@ pub trait Enemy: Visitable {
     fn step(&mut self) -> u32;
     fn value(&self) -> u32;
     fn is_dead(&self) -> bool;
+    fn copy(&self) -> Box<dyn Enemy>;
 }
 
 #[derive(Clone)]
@@ -60,6 +61,10 @@ impl Enemy for EnemySimple {
 
     fn is_dead(&self) -> bool {
         self.life == 0
+    }
+
+    fn copy(&self) -> Box<dyn Enemy> {
+        Box::new(self.clone())
     }
 }
 
@@ -116,6 +121,10 @@ impl Enemy for EnemyDefense {
     fn is_dead(&self) -> bool {
         self.life == 0
     }
+
+    fn copy(&self) -> Box<dyn Enemy> {
+        Box::new(self.clone())
+    }
 }
 
 #[derive(Clone)]
@@ -169,5 +178,9 @@ impl Enemy for EnemyBig {
 
     fn is_dead(&self) -> bool {
         self.life == 0
+    }
+
+    fn copy(&self) -> Box<dyn Enemy> {
+        Box::new(self.clone())
     }
 }

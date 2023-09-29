@@ -17,4 +17,6 @@ pub trait Tool: Visitable {
     fn value(&self) -> u32 {
         0
     }
+
+    fn copy(&self) -> Box<dyn Tool>;
 }

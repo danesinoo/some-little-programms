@@ -4,6 +4,5 @@ pub trait ObserverPlayground<T> {
 
 pub trait ObservablePlayground<T> {
     fn register(&mut self, observer: Box<dyn ObserverPlayground<T>>);
-    fn remove(&mut self, observer: Box<dyn ObserverPlayground<T>>);
     fn notify(&mut self, row: usize, col: usize, e: &T);
 }

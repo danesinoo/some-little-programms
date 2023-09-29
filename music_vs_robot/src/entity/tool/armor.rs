@@ -2,6 +2,7 @@ use crate::entity::damage::DamagePlayer;
 use crate::entity::tool::tool::Tool;
 use crate::util::visitor::{Visitable, Visitor};
 
+#[derive(Clone)]
 pub struct Armor {
     durability: u32,
 }
@@ -28,5 +29,9 @@ impl Tool for Armor {
             self.durability -= 1;
             *damage = DamagePlayer::new(0, 0, 0);
         }
+    }
+
+    fn copy(&self) -> Box<dyn Tool> {
+        Box::new(self.clone())
     }
 }

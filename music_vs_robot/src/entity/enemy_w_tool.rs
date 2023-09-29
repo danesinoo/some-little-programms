@@ -57,6 +57,15 @@ impl Visitable for EnemyWTool {
     }
 }
 
+impl Clone for EnemyWTool {
+    fn clone(&self) -> Self {
+        EnemyWTool {
+            enemy: self.enemy.copy(),
+            tool: self.tool.copy(),
+        }
+    }
+}
+
 impl Enemy for EnemyWTool {
     fn suffer_damage(&mut self, damage: &mut DamagePlayer) -> bool {
         self.tool.suffer_damage(damage);
@@ -81,5 +90,9 @@ impl Enemy for EnemyWTool {
 
     fn is_dead(&self) -> bool {
         self.enemy.is_dead()
+    }
+
+    fn copy(&self) -> Box<dyn Enemy> {
+        Box::new(self.clone())
     }
 }

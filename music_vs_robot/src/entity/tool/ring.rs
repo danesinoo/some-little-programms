@@ -1,6 +1,7 @@
 use crate::entity::tool::tool::Tool;
 use crate::util::visitor::{Visitable, Visitor};
 
+#[derive(Clone)]
 pub struct Ring {
     value: u32,
 }
@@ -24,5 +25,9 @@ impl Tool for Ring {
 
     fn value(&self) -> u32 {
         self.value
+    }
+
+    fn copy(&self) -> Box<dyn Tool> {
+        Box::new(self.clone())
     }
 }
