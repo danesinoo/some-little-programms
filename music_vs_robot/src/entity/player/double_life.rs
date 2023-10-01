@@ -3,13 +3,13 @@ use crate::entity::player::{consts::*, player::Player};
 use crate::util::visitor::{Visitable, Visitor};
 
 pub struct DoubleLife {
-    health: u32,
-    level: u32,
+    health: usize,
+    level: usize,
     life: bool,
 }
 
 impl DoubleLife {
-    pub fn new(level: u32) -> Self {
+    pub fn new(level: usize) -> Self {
         Self {
             health: DOUBLE_LIFE_HEALTH + DOUBLE_LIFE_HEALTH_INCREMENT * level,
             level,
@@ -25,15 +25,15 @@ impl Visitable for DoubleLife {
 }
 
 impl Player for DoubleLife {
-    fn get_health(&self) -> u32 {
+    fn get_health(&self) -> usize {
         self.health
     }
 
-    fn set_health(&mut self, health: u32) {
+    fn set_health(&mut self, health: usize) {
         self.health = health;
     }
 
-    fn get_level(&self) -> u32 {
+    fn get_level(&self) -> usize {
         self.level
     }
 
@@ -42,15 +42,15 @@ impl Player for DoubleLife {
         self.health += DOUBLE_LIFE_HEALTH_INCREMENT;
     }
 
-    fn get_cost(&self) -> u32 {
-        DOUBLE_LIFE_COST * (self.level as f32 - 0.75) as u32
+    fn get_cost(&self) -> usize {
+        DOUBLE_LIFE_COST * (self.level as f32 - 0.75) as usize
     }
 
     fn attack(&self) -> DamagePlayer {
         DamagePlayer::new(self.level * DOUBLE_LIFE_DAMAGE, 0, 0)
     }
 
-    fn suffer_damage(&mut self, damage: u32) -> bool {
+    fn suffer_damage(&mut self, damage: usize) -> bool {
         if damage > self.get_health() {
             if self.life {
                 self.life = false;

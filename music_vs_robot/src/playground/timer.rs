@@ -3,7 +3,7 @@ use crate::util::observer::{Observer, Subject};
 
 struct Timer {
     obs: Vec<Box<dyn Observer>>,
-    count: u32,
+    count: usize,
 }
 
 impl Timer {
@@ -16,7 +16,7 @@ impl Timer {
 }
 
 impl Counter for Timer {
-    fn get(&self) -> u32 {
+    fn get(&self) -> usize {
         self.count
     }
 
@@ -24,11 +24,11 @@ impl Counter for Timer {
         self.count = 0;
     }
 
-    fn add(&mut self, n: u32) {
+    fn add(&mut self, n: usize) {
         self.count += n;
     }
 
-    fn sub(&mut self, n: u32) {
+    fn sub(&mut self, n: usize) {
         if n < self.count {
             self.count -= n;
         }

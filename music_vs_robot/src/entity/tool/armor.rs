@@ -4,11 +4,11 @@ use crate::util::visitor::{Visitable, Visitor};
 
 #[derive(Clone)]
 pub struct Armor {
-    durability: u32,
+    durability: usize,
 }
 
 impl Armor {
-    pub fn new(durability: u32) -> Self {
+    pub fn new(durability: usize) -> Self {
         Self { durability }
     }
 }

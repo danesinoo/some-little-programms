@@ -3,9 +3,9 @@ use crate::playground::{consts::COL, consts::ROW, playground::Playground};
 use crate::util::observer_playground::{ObservablePlayground, ObserverPlayground};
 use std::collections::VecDeque;
 
-trait PlaygroundDamage<PE>: Playground<DamagePlayer, DamagePlayer>
+pub trait PlaygroundDamage<PE>: Playground<DamagePlayer, DamagePlayer>
 where
-    PE: Playground<EnemyWTool, VecDeque<EnemyWTool>>,
+    PE: Playground<EnemyWTool, VecDeque<EnemyWTool>> + ?Sized,
 {
     fn attack(&mut self, pe: &mut PE, row: usize) {
         let mut col = 0;
@@ -44,14 +44,14 @@ where
             } else {
                 d.reset_slow();
                 *self.get_mut(row, col) =
-                    *self.get(row, col) / DamagePlayer::new(std::u32::MAX, 1, std::u32::MAX);
+                    *self.get(row, col) / DamagePlayer::new(std::usize::MAX, 1, std::usize::MAX);
             }
             self.insert(row, col + 1, &d);
             col -= 1;
         }
     }
 
-    fn is_slow(&mut self, row: usize, col: usize) -> bool {
+    fn is_slow(&mut self, row: usize, col: usize) -> usize {
         self.get_mut(row, col).slow()
     }
 }
@@ -76,7 +76,7 @@ impl ObservablePlayground<DamagePlayer> for PlaygroundDamageImpl {
         self.obs.push(obs);
     }
 
-    fn notify(&mut self, row: usize, col: usize, value: &DamagePlayer) {
+    fn notify(&mut self, row: usize, col: usize, value: Option<&DamagePlayer>) {
         self.obs.iter_mut().for_each(|x| x.update(row, col, value));
     }
 }
@@ -97,7 +97,7 @@ impl Playground<DamagePlayer, DamagePlayer> for PlaygroundDamageImpl {
     fn insert(&mut self, row: usize, col: usize, value: &DamagePlayer) -> bool {
         if self.is_empty(row, col) {
             self.playground[row][col] = *value;
-            self.notify(row, col, value);
+            self.notify(row, col, Some(value));
             true
         } else {
             false
@@ -107,7 +107,7 @@ impl Playground<DamagePlayer, DamagePlayer> for PlaygroundDamageImpl {
     fn remove(&mut self, _value: &DamagePlayer, row: usize, col: usize) -> bool {
         if !self.is_empty(row, col) {
             self.playground[row][col] = DamagePlayer::default();
-            self.notify(row, col, &DamagePlayer::default());
+            self.notify(row, col, None);
             true
         } else {
             false

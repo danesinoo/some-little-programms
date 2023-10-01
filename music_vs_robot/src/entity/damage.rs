@@ -2,22 +2,22 @@ use crate::util::visitor::{Visitable, Visitor};
 use std::ops::{Add, Div};
 
 pub trait Damage: Add + Div + Visitable + Copy + Sized + PartialEq + Default {
-    fn damage(&mut self) -> u32;
+    fn damage(&mut self) -> usize;
     fn reset_slow(&mut self);
-    fn slow(&mut self) -> bool;
+    fn slow(&mut self) -> usize;
     fn one_wave(&mut self);
 }
 
 #[derive(Copy, Clone, Debug, Default, PartialEq)]
 pub struct DamagePlayer {
-    damage: u32,
-    slow: u32,
-    wave: u32,
+    damage: usize,
+    slow: usize,
+    wave: usize,
     column: i8,
 }
 
 impl DamagePlayer {
-    pub fn new(damage: u32, slow: u32, wave: u32) -> Self {
+    pub fn new(damage: usize, slow: usize, wave: usize) -> Self {
         DamagePlayer {
             damage,
             slow,
@@ -68,7 +68,7 @@ impl Visitable for DamagePlayer {
 }
 
 impl Damage for DamagePlayer {
-    fn damage(&mut self) -> u32 {
+    fn damage(&mut self) -> usize {
         self.damage
     }
 
@@ -76,12 +76,12 @@ impl Damage for DamagePlayer {
         self.slow = 0;
     }
 
-    fn slow(&mut self) -> bool {
+    fn slow(&mut self) -> usize {
         if self.slow > 0 {
             self.slow -= 1;
-            true
+            1
         } else {
-            false
+            0
         }
     }
 

@@ -4,17 +4,17 @@ use crate::util::visitor::Visitable;
 pub trait Tool: Visitable {
     fn is_broken(&self) -> bool;
 
-    fn attack(&mut self) -> u32 {
+    fn attack(&mut self) -> usize {
         0
     }
 
     fn suffer_damage(&mut self, _damage: &mut DamagePlayer) {}
 
-    fn step(&mut self) -> u32 {
+    fn step(&mut self) -> usize {
         0
     }
 
-    fn value(&self) -> u32 {
+    fn value(&self) -> usize {
         0
     }
 

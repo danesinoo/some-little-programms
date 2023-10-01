@@ -3,12 +3,12 @@ use crate::entity::player::{consts::*, player::Player};
 use crate::util::visitor::{Visitable, Visitor};
 
 pub struct ThreeRow {
-    health: u32,
-    level: u32,
+    health: usize,
+    level: usize,
 }
 
 impl ThreeRow {
-    pub fn new(level: u32) -> Self {
+    pub fn new(level: usize) -> Self {
         Self {
             health: THREE_ROW_HEALTH + THREE_ROW_HEALTH_INCREMENT * level,
             level,
@@ -23,15 +23,15 @@ impl Visitable for ThreeRow {
 }
 
 impl Player for ThreeRow {
-    fn get_health(&self) -> u32 {
+    fn get_health(&self) -> usize {
         self.health
     }
 
-    fn set_health(&mut self, health: u32) {
+    fn set_health(&mut self, health: usize) {
         self.health = health;
     }
 
-    fn get_level(&self) -> u32 {
+    fn get_level(&self) -> usize {
         self.level
     }
 
@@ -40,8 +40,8 @@ impl Player for ThreeRow {
         self.health += THREE_ROW_HEALTH_INCREMENT;
     }
 
-    fn get_cost(&self) -> u32 {
-        THREE_ROW_COST * (self.level as f32 - 0.75) as u32
+    fn get_cost(&self) -> usize {
+        THREE_ROW_COST * (self.level as f32 - 0.75) as usize
     }
 
     fn attack(&self) -> DamagePlayer {

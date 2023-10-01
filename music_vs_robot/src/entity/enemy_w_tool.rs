@@ -11,7 +11,7 @@ pub struct EnemyWTool {
 }
 
 impl EnemyWTool {
-    pub fn new(min: u32, max: u32) -> Self {
+    pub fn new(min: usize, max: usize) -> Self {
         EnemyWTool {
             enemy: get_enemy(min, max),
             tool: get_tool(min, max),
@@ -19,7 +19,7 @@ impl EnemyWTool {
     }
 }
 
-fn get_enemy(min: u32, max: u32) -> Box<dyn Enemy> {
+fn get_enemy(min: usize, max: usize) -> Box<dyn Enemy> {
     let life = rand(min, max);
     let attack = rand(min, max);
     let step = rand(MIN_STEP, MAX_STEP);
@@ -33,7 +33,7 @@ fn get_enemy(min: u32, max: u32) -> Box<dyn Enemy> {
     }
 }
 
-fn get_tool(min: u32, max: u32) -> Box<dyn Tool> {
+fn get_tool(min: usize, max: usize) -> Box<dyn Tool> {
     let durability = rand(0, 5);
 
     match rand(0, 3) {
@@ -46,7 +46,7 @@ fn get_tool(min: u32, max: u32) -> Box<dyn Tool> {
 }
 
 #[inline]
-fn rand(min: u32, max: u32) -> u32 {
+fn rand(min: usize, max: usize) -> usize {
     rand::thread_rng().gen_range(min..=max)
 }
 
@@ -66,6 +66,12 @@ impl Clone for EnemyWTool {
     }
 }
 
+impl PartialEq for EnemyWTool {
+    fn eq(&self, other: &Self) -> bool {
+        self.enemy.eq(&other.enemy) && self.tool.eq(&other.tool)
+    }
+}
+
 impl Enemy for EnemyWTool {
     fn suffer_damage(&mut self, damage: &mut DamagePlayer) -> bool {
         self.tool.suffer_damage(damage);
@@ -76,15 +82,15 @@ impl Enemy for EnemyWTool {
         }
     }
 
-    fn attack(&mut self) -> u32 {
+    fn attack(&mut self) -> usize {
         self.enemy.attack() + self.tool.attack()
     }
 
-    fn step(&mut self) -> u32 {
+    fn step(&mut self) -> usize {
         self.enemy.step() + self.tool.step()
     }
 
-    fn value(&self) -> u32 {
+    fn value(&self) -> usize {
         self.enemy.value() + self.tool.value()
     }
 

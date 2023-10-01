@@ -3,11 +3,11 @@ use crate::util::visitor::{Visitable, Visitor};
 
 #[derive(Clone)]
 pub struct Ring {
-    value: u32,
+    value: usize,
 }
 
 impl Ring {
-    pub fn new(value: u32) -> Self {
+    pub fn new(value: usize) -> Self {
         Self { value }
     }
 }
@@ -23,7 +23,7 @@ impl Tool for Ring {
         false
     }
 
-    fn value(&self) -> u32 {
+    fn value(&self) -> usize {
         self.value
     }
 

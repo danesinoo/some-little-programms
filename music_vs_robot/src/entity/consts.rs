@@ -1,2 +1,2 @@
-pub const MIN_STEP: u32 = 1;
-pub const MAX_STEP: u32 = 5;
+pub const MIN_STEP: usize = 1;
+pub const MAX_STEP: usize = 5;

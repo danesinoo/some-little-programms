@@ -3,12 +3,12 @@ use crate::util::visitor::{Visitable, Visitor};
 
 #[derive(Clone)]
 pub struct Boots {
-    durability: u32,
-    step: u32,
+    durability: usize,
+    step: usize,
 }
 
 impl Boots {
-    pub fn new(durability: u32, step: u32) -> Self {
+    pub fn new(durability: usize, step: usize) -> Self {
         Self { durability, step }
     }
 }
@@ -24,7 +24,7 @@ impl Tool for Boots {
         self.durability == 0
     }
 
-    fn step(&mut self) -> u32 {
+    fn step(&mut self) -> usize {
         if self.is_broken() {
             0
         } else {

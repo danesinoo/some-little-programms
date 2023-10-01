@@ -3,12 +3,12 @@ use crate::util::visitor::{Visitable, Visitor};
 
 #[derive(Clone)]
 pub struct Weapon {
-    damage: u32,
-    durability: u32,
+    damage: usize,
+    durability: usize,
 }
 
 impl Weapon {
-    pub fn new(durability: u32, damage: u32) -> Self {
+    pub fn new(durability: usize, damage: usize) -> Self {
         Self { damage, durability }
     }
 }
@@ -24,7 +24,7 @@ impl Tool for Weapon {
         self.durability == 0
     }
 
-    fn attack(&mut self) -> u32 {
+    fn attack(&mut self) -> usize {
         if self.is_broken() {
             0
         } else {
