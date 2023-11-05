@@ -1,7 +1,7 @@
 use std::env;
 use std::io::Write;
 
-const PATH: &str = "/Users/carlorosso/.config/programmini/site/_";
+const PATH: &str = "/Users/carlorosso/.config/programmini/site/src/";
 
 fn main() -> Result<(), std::io::Error> {
     // get the current date: yyyy-mm-dd
