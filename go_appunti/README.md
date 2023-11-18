@@ -226,3 +226,4 @@ func fun(var_name int) {
 // if type_i == type_j for all j in [1, i]
 // even this works:
 // func function_name(variable_name_1, ..., variable_name_i type)
+// you can group up (factorize) the variable type
