@@ -80,17 +80,13 @@ fmt.Println(someString, " ", someInteger)
 - __Strings__: per serie di caratteri
 
 - __Integers__ per gli interi:
----
+
 | number of bits | interi | naturali |
----
+| - | - | - |
 | 8 | int8 | uint8 |
----
 | 16 | int16 | uint16 |
----
 | 32 | int32 | uint32 |
----
 | 64 | int64 | uint64 |
----
 
 
 - *Booleans*
