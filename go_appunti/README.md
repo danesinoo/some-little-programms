@@ -79,25 +79,105 @@ fmt.Println(someString, " ", someInteger)
 
 - __Strings__: per serie di caratteri
 
-- __Integers__ per gli interi:
+- __Integers__: per gli interi:
 
-| number of bits | interi | naturali |
-| - | - | - |
-| 8 | int8 | uint8 |
-| 16 | int16 | uint16 |
-| 32 | int32 | uint32 |
-| 64 | int64 | uint64 |
+| number of bits    | interi    | naturali  |
+| ---               | ---       | ---       |
+| hardware specific | int       | uint      |
+| 8                 | int8      | uint8     |
+| 16                | int16     | uint16    |
+| 32                | int32     | uint32    |
+| 64                | int64     | uint64    |
 
+- __Floating Point__: numeri con la virgola:
+
+| number of bits    | float     |
+| ---               | ---       |
+| hardware specific | int       |
+| 8                 | int8      |
+| 16                | int16     |
+| 32                | int32     |
+| 64                | int64     |
 
 - *Booleans*
 
 - *Maps*
 
-- *Arrays*
+- *Array*
 
-- *Slice*: corrisponde a std::<vector> in cpp
+```go
+// base structure to initialize an array
+// var array_example = [<size>]<data_type>{element_1, ..., element_i} // i < size
+
+some_name := [5]string{"Carlo", "Giovanni"}
+
+some_name[2] = "Giacomo"
+```
+
+- *Slice*: corrisponde a ``std::<vector>`` in cpp, ovvero la sua dimensione è
+  dinamica (l'array ce l'ha statica (nella stack))
+
+```go
+// base structure to initializa a slice
+// var slice_example = []<data_tipe>{element1, ..., element_i}
+
+some_name := []string{"Carlo", "Giovanni"}
+some_name.append("Giacomo")
+```
+
+
+### Type conversion
 
 
 
+## Take some input
 
+```go
+var some_input
+fmt.Scan(&some_input)       // non possiamo passare la variabile per valore
+```
 
+Per passare una variabile ad una funzione e permettere alla funzione di
+modificare il valore che stiamo passando abbiamo bisogno di passare un puntatore
+alla variabile. Per questo motivo usiamo l'operatore di dereferenziazione ``&``.
+In questo modo permettiamo alla funzione di avere _side-effect_ sulla variabile
+che passiamo.
+
+## loops
+
+```go
+for {
+    // this iterates forever
+
+    i := 0
+    i += 10
+}
+```
+
+Go non ha la _keyword_ ``while``, i loop esistono solo mediante la _keyword_
+``for``. Per iterare nelle liste:
+
+```go
+for index, element := range the_slice {
+    fmt.Println("the_slice[", index, "]: ", element)
+
+    // equivalent
+    // fmt.Printf("the_slice[%v]: %v", index, the_slice[index]) // %v stands for "value"
+}
+```
+<!-- ``string``: package per lavorare con le string -->
+
+Per ignorare una variabile si utilizza il simobolo ``_``, per esempio se non
+vogliamo l'indice nel ciclo for il codice diventa:
+
+```go
+for _, element := range the_slice {
+    fmt.Println("the_slice[", index, "]: ", element)
+
+    // equivalent
+    // fmt.Printf("the_slice[%v]: %v", index, the_slice[index]) // %v stands for "value"
+}
+```
+
+Il simbolo ``_`` avvisa il compilatore che non abbiamo intenzione di usare la
+suddetta variabile.
