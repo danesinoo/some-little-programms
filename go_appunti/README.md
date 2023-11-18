@@ -93,11 +93,8 @@ fmt.Println(someString, " ", someInteger)
 
 | number of bits    | float     |
 | ---               | ---       |
-| hardware specific | int       |
-| 8                 | int8      |
-| 16                | int16     |
-| 32                | int32     |
-| 64                | int64     |
+| 32                | float32   |
+| 64                | float64   |
 
 - *Booleans*
 
