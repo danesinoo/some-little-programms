@@ -137,7 +137,7 @@ fmt.Scan(&some_input)       // you can't pass the variable by value
 Per passare una variabile ad una funzione e permettere alla funzione di
 modificare il valore che stiamo passando, abbiamo bisogno di passare un puntatore
 alla variabile. Per questo motivo usiamo l'operatore di referenziazione ``&``.
-In questo modo permettiamo alla funzione di avere _side-effect_ sulla variabile
+In questo modo, permettiamo alla funzione di avere _side-effect_ sulla variabile
 che passiamo.
 
 ## Loops
