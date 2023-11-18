@@ -34,8 +34,8 @@ func main() {
 ```
 
 I programmi e le librerie di go sono organizzati in package.  
-``import "fmt"`` include il package "fmt". Un *package* è un contaner di qualche
-codice.  
+``import "fmt"`` include il package "fmt". Un *package* è un container di 
+qualche codice.  
 Per eseguire il programma si digita nel terminale ``go run main.go``, dalla
 directory (PWD) che contiene il file ``main.go``.
 
@@ -62,7 +62,7 @@ Si può dichiarare una variabile senza inizializzarla. Attenzione, go non
 permette di usare una variabile prima della sua inizializzazione. Per esempio:
 
 ```go
-var someString string         // il tipo deve essere esplicito
+var someString string       // il tipo deve essere esplicito
 
 // var someVariable         // this is an ERROR! Il tipo non è esplicito 
                             // e il compilatore non lo indovina
@@ -77,16 +77,20 @@ fmt.Println(someString, " ", someInteger)
 
 ## Data Types
 
-- *Strings* per serie di caratteri
+- __Strings__: per serie di caratteri
 
-- *Integers* per gli interi:
+- __Integers__ per gli interi:
 ---
 | number of bits | interi | naturali |
 ---
 | 8 | int8 | uint8 |
+---
 | 16 | int16 | uint16 |
+---
 | 32 | int32 | uint32 |
+---
 | 64 | int64 | uint64 |
+---
 
 
 - *Booleans*
