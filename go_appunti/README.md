@@ -143,7 +143,7 @@ alla variabile. Per questo motivo usiamo l'operatore di dereferenziazione ``&``.
 In questo modo permettiamo alla funzione di avere _side-effect_ sulla variabile
 che passiamo.
 
-## loops
+## Loops
 
 ```go
 for {
@@ -151,6 +151,13 @@ for {
 
     i := 0
     i += 10
+
+    // break    // used to exit a loop
+
+    continue
+
+    // this code is unreachable
+    i += 20
 }
 ```
 
@@ -168,7 +175,7 @@ for index, element := range the_slice {
 <!-- ``string``: package per lavorare con le string -->
 
 Per ignorare una variabile si utilizza il simobolo ``_``, per esempio se non
-vogliamo l'indice nel ciclo for il codice diventa:
+vogliamo l'indice nel loop precedente il codice diventa:
 
 ```go
 for _, element := range the_slice {
@@ -181,3 +188,41 @@ for _, element := range the_slice {
 
 Il simbolo ``_`` avvisa il compilatore che non abbiamo intenzione di usare la
 suddetta variabile.
+
+## Condition
+
+```go
+if condition { 
+    /* block */ 
+} else if another_condition { 
+    /* another block */ 
+} else { 
+    /* last block */ 
+}
+```
+
+## Functions
+
+```go
+package main
+
+import "fmt"
+
+func main() {
+    some_int := 10
+    fun(some_arg)
+}
+
+// template:
+// func function_name(variable_name_1 type_1, ..., variable_name_i type_i)
+// (returning_type_1, ..., returning_type_n) {
+// /* block of code */
+// }
+
+func fun(var_name int) {
+    fmt.Println(var_name)
+}
+
+// if type_i == type_j for all j in [1, i]
+// even this works:
+// func function_name(variable_name_1, ..., variable_name_i type)
