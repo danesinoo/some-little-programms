@@ -2,15 +2,18 @@ use chrono::Local;
 use std::env;
 use std::fs::OpenOptions;
 use std::io::prelude::*;
+mod pausa;
 mod show_data;
-use show_data::display_info;
 
 fn main() {
     if let Err(e) = crate::setup() {
         eprintln!("Couldn't create file: {}", e);
     }
 
-    if let Some(arg1) = env::args().nth(1) {
+    let mut args = env::args();
+    args.next(); // skip the first argument
+
+    if let Some(arg1) = args.next() {
         if start_end_time(&arg1, "-") {
             return;
         } else if start_end_time(&arg1, "_") {
@@ -18,10 +21,13 @@ fn main() {
         } else {
             match arg1.as_ref() {
                 "info" => {
-                    display_info(env::args().nth(2).as_deref().unwrap_or("all"));
+                    show_data::display_info(&args.next().unwrap_or("all".to_string()));
                 }
                 "help" | "-h" | "--help" => {
                     print_help();
+                }
+                "pausa" | "break" => {
+                    pausa::pausa(&args.next().unwrap());
                 }
                 _ => {
                     println!("Didn't get it");

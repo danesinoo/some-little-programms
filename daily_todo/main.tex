@@ -1,0 +1,59 @@
+\documentclass[12pt]{article}
+
+\usepackage[T1]{fontenc} % Font encoding
+\usepackage[scaled]{helvet} % Load Helvetica font
+\usepackage[top=3cm, bottom=2.5cm, left=2.5cm, right=2.5cm,
+	headsep=0.5cm, headheight=2cm, footskip=1.5cm]{geometry}
+\pagestyle{empty} % No page numbers
+
+\renewcommand\familydefault{\sfdefault} % Set default font family to sans-serif
+\linespread{1.5}
+
+\usepackage{tikz}
+\usepackage{multicol}
+
+\begin{document}
+
+\begin{multicols}{2}
+
+	\LARGE{\textbf{Daily tasks}}
+
+
+	\large{\textbf{Tasks' list}}
+
+	\vspace{1cm}
+
+	\begin{tikzpicture}
+		\foreach \x in {1,...,14}
+		\draw (0, \x) -- (6, \x);
+	\end{tikzpicture}
+
+	\large{\textbf{Tasks' tier list}}
+
+	\vspace{1cm}
+
+	\begin{tikzpicture}
+		\foreach \x in {1,...,5}
+		\draw (0, \x) -- (6, \x);
+	\end{tikzpicture}
+
+	\vspace{1cm}
+
+	\large{\textbf{Date}}
+	\underline{\hspace{5.7cm}}
+
+	\large{\textbf{Schedule}}
+	\vspace{1cm}
+
+	\begin{tikzpicture}
+		\foreach \x in {7,...,23}
+		\draw (6, -\x/1.1) -- (0, -\x/1.1) node [above left] {\x};
+
+		\foreach \x in {0,...,3}
+		\draw (6, -\x-24/1.1) -- (0, -\x-24/1.1) node [above left] {\x};
+	\end{tikzpicture}
+
+\end{multicols}
+
+
+\end{document}

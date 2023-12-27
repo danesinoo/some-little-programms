@@ -23,7 +23,15 @@ use std::path::PathBuf;
 
 extern crate rayon;
 
-const IGNORE_FOLDERS: [&str; 6] = ["layout", "assets", "target", "src", ".git", ".github"];
+const IGNORE_FOLDERS: [&str; 7] = [
+    "layout",
+    "assets",
+    "target",
+    "src",
+    ".git",
+    ".github",
+    ".obsidian",
+];
 
 const IGNORE_FILES: [&str; 1] = ["README.md"]; // only .md files are converted
 
@@ -33,31 +41,29 @@ const IGNORE_FILES: [&str; 1] = ["README.md"]; // only .md files are converted
 /// - ```target```: the path to the directory which contains the markdown files
 /// - ```destination```: the path to the directory in which the html files are
 /// going to be saved
-pub fn md_to_html(target: &str, destination: &str) -> Result<(), std::io::Error> {
+pub fn md_to_html(src: &str, out: &str) -> Result<(), std::io::Error> {
     // vars contiene le variabili che sono sostituite:
     // {{ key }} -> value
     // si può creare un file che contiene dei valori di default
     // e si inizializza vars con tali valori
     let mut vars = HashMap::new();
-
-    vars.insert("DESTINATION", destination.to_string());
-    vars.insert("TARGET", target.to_string());
+    vars.insert("TARGET", src.to_string());
 
     // create the destination directory if it doesn't already exist
-    if !PathBuf::from(&vars.get("DESTINATION").unwrap()).exists() {
-        fs::create_dir(&vars.get("DESTINATION").unwrap())?;
+    if !PathBuf::from(out).exists() {
+        fs::create_dir(out)?;
     }
 
     // create the collections
     vars.insert("base-path", "../".to_string());
 
-    let folders = get_folders(&PathBuf::from(vars.get("TARGET").unwrap()));
+    let folders = get_folders(&PathBuf::from(src));
 
     folders
         .par_iter()
         .map(|folder| {
             // create the folder in the destination directory
-            let mut d = PathBuf::from(&vars.get("DESTINATION").unwrap());
+            let mut d = PathBuf::from(out);
             d.push(folder.file_name().unwrap());
 
             if !d.exists() {
@@ -73,7 +79,7 @@ pub fn md_to_html(target: &str, destination: &str) -> Result<(), std::io::Error>
                 .iter()
                 .zip(links.iter())
                 .for_each(|(html, path)| {
-                    fs::write(vars.get("DESTINATION").unwrap().to_string() + path, html).unwrap();
+                    fs::write(out.to_string() + path, html).unwrap();
                 });
         });
 

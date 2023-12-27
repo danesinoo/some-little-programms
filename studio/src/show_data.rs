@@ -104,11 +104,6 @@ impl RawData {
     }
 
     #[inline]
-    fn parse_time(string: &str) -> DateTime<Local> {
-        Local
-            .datetime_from_str(string, "%Y-%m-%d %H:%M:%S%.f %:z")
-            .unwrap()
-    }
 
     /// Vettore di attività
     /// i dati in ciascuna attività sono ordinati in base
@@ -121,7 +116,7 @@ impl RawData {
             .map(|line| {
                 let line = line.unwrap();
                 let words = line.split_whitespace().collect::<Vec<_>>();
-                let time = Self::parse_time(&words[2..].join(" "));
+                let time = parse_time(&words[2..].join(" "));
                 match words[1] {
                     "begin" => (words[0].to_string(), true, time),
                     "end" => (words[0].to_string(), false, time),
@@ -306,4 +301,11 @@ fn min(t: &DateTime<Local>) -> u16 {
 #[inline]
 fn num_min(time: &DateTime<Local>) -> u16 {
     (time.hour() * 60 + time.minute()) as u16
+}
+
+#[inline]
+pub fn parse_time(string: &str) -> DateTime<Local> {
+    Local
+        .datetime_from_str(string, "%Y-%m-%d %H:%M:%S%.f %:z")
+        .unwrap()
 }
