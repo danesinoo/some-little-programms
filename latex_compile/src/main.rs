@@ -6,6 +6,7 @@ use std::path::PathBuf;
 fn main() -> Result<()> {
     let mut out = "./site".to_string();
     let mut src = "./".to_string();
+    let mut only_file = false;
 
     let args = env::args().collect::<Vec<_>>();
     let mut args_iter = args[1..].iter();
@@ -13,6 +14,7 @@ fn main() -> Result<()> {
         match arg.as_str() {
             "-o" => out = args_iter.next().unwrap().to_string(),
             "-s" => src = args_iter.next().unwrap().to_string(),
+            "-f" => only_file = true,
             _ => {
                 // help
                 println!("Usage: {} [-d destination] [-t target]", args[0]);
@@ -29,10 +31,13 @@ fn main() -> Result<()> {
 
     debouncer
         .watcher()
-        .watch(&PathBuf::from(&src), notify::RecursiveMode::NonRecursive)?;
+        .watch(&PathBuf::from(&src), notify::RecursiveMode::Recursive)?;
 
-    let cmd = |path: PathBuf| {
+    let cmd = |mut path: PathBuf| {
         let mut cmd = std::process::Command::new("pdflatex");
+        if only_file {
+            path = src.join("main.tex");
+        }
         cmd.arg("-output-directory")
             .arg(&out)
             .arg(path.to_str().unwrap());

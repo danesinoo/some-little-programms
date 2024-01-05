@@ -20,6 +20,8 @@
 //! Once the program is run, it will wait for an event to occur in the target
 //! directory.
 //!
+//! ## Idee
+//! - usare axum per creare un server che serve i file html (molto simile a actix-web)
 
 use notify::{RecursiveMode, Result};
 mod md_to_html;
