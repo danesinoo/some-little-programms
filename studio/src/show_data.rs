@@ -1,5 +1,4 @@
 use chrono::{DateTime, Datelike, Local, TimeZone, Timelike, Weekday};
-use home::home_dir;
 use prettytable::{Row, Table};
 use std::fs::OpenOptions;
 use std::io::prelude::*;
@@ -9,12 +8,7 @@ use std::time::Instant;
 
 #[inline]
 pub fn path() -> PathBuf {
-    let mut home = home_dir().expect("u windows, ah");
-    home.push(".config");
-    home.push("programmini");
-    home.push("buff");
-    home.push("studio.log");
-    home
+    PathBuf::from("~/.config/programmini/buff/studio.log")
 }
 
 pub fn display_info(name: &str) {
@@ -115,7 +109,13 @@ impl RawData {
             .lines()
             .map(|line| {
                 let line = line.unwrap();
-                let words = line.split_whitespace().collect::<Vec<_>>();
+                let mut words = line.split_whitespace().collect::<Vec<_>>();
+                if words.len() != 3 {
+                    words = line.split(',').collect();
+                }
+                if words.len() != 3 {
+                    panic!("Error in parsing the file");
+                }
                 let time = parse_time(&words[2..].join(" "));
                 match words[1] {
                     "begin" => (words[0].to_string(), true, time),

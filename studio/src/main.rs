@@ -14,9 +14,7 @@ fn main() {
     args.next(); // skip the first argument
 
     if let Some(arg1) = args.next() {
-        if start_end_time(&arg1, "-") {
-            return;
-        } else if start_end_time(&arg1, "_") {
+        if start_end_time(&arg1, "-") || start_end_time(&arg1, "_") || start_end_time(&arg1, ",") {
             return;
         } else {
             match arg1.as_ref() {
@@ -41,11 +39,11 @@ fn start_end_time(arg: &str, delimiter: &str) -> bool {
     if let Some((arg1, arg2)) = arg.split_once(delimiter) {
         match arg2 {
             "begin" | "b" | "start" => {
-                write_log(&format!("{arg1} begin"));
+                write_log(&format!("{arg1},begin"));
                 true
             }
             "end" | "e" | "stop" => {
-                write_log(&format!("{arg1} end"));
+                write_log(&format!("{arg1},end"));
                 true
             }
             _ => {
@@ -65,7 +63,7 @@ fn write_log(s: &str) {
         .open(crate::show_data::path())
         .unwrap();
 
-    if let Err(e) = writeln!(file, "{} {}", s, Local::now()) {
+    if let Err(e) = writeln!(file, "{},{}", s, Local::now()) {
         eprintln!("Couldn't write to file: {}", e);
     }
 }
@@ -84,7 +82,7 @@ fn setup() -> std::io::Result<()> {
 
 fn print_help() {
     println!("Usage:");
-    println!("<task_name>_begin -> record the start time of the task");
-    println!("<task_name>_end   -> record the end time of the task");
+    println!("<task_name>,begin -> record the start time of the task");
+    println!("<task_name>,end   -> record the end time of the task");
     println!("info              -> show the info of the tasks");
 }

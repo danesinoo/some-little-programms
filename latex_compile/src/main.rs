@@ -6,7 +6,7 @@ use std::path::PathBuf;
 fn main() -> Result<()> {
     let mut out = "./site".to_string();
     let mut src = "./".to_string();
-    let mut only_file = false;
+    let mut only_file = (false, "".to_string());
 
     let args = env::args().collect::<Vec<_>>();
     let mut args_iter = args[1..].iter();
@@ -14,10 +14,10 @@ fn main() -> Result<()> {
         match arg.as_str() {
             "-o" => out = args_iter.next().unwrap().to_string(),
             "-s" => src = args_iter.next().unwrap().to_string(),
-            "-f" => only_file = true,
+            "-f" => only_file = (true, args_iter.next().unwrap().to_string()),
             _ => {
                 // help
-                println!("Usage: {} [-d destination] [-t target]", args[0]);
+                println!("Usage: {} [-o output] [-s source]", args[0]);
                 return Ok(());
             }
         }
@@ -34,14 +34,15 @@ fn main() -> Result<()> {
         .watch(&PathBuf::from(&src), notify::RecursiveMode::Recursive)?;
 
     let cmd = |mut path: PathBuf| {
-        let mut cmd = std::process::Command::new("pdflatex");
-        if only_file {
-            path = src.join("main.tex");
+        let mut command = std::process::Command::new("pdflatex");
+        if only_file.0 {
+            path = src.join(&only_file.1);
         }
-        cmd.arg("-output-directory")
+        command
+            .arg("-output-directory")
             .arg(&out)
             .arg(path.to_str().unwrap());
-        match cmd.output() {
+        match command.output() {
             Ok(_) => (),
             Err(e) => println!("Build {} failed: {}", path.to_str().unwrap(), e),
         };

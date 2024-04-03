@@ -16,6 +16,7 @@
 //! │   └── ...
 //! └── ...
 //! ```
+use pulldown_cmark::{html, Options, Parser};
 use rayon::prelude::*;
 use std::collections::HashMap;
 use std::fs;
@@ -34,6 +35,18 @@ const IGNORE_FOLDERS: [&str; 7] = [
 ];
 
 const IGNORE_FILES: [&str; 1] = ["README.md"]; // only .md files are converted
+
+fn to_html(md: &str) -> String {
+    let mut options = Options::empty();
+    options.insert(Options::ENABLE_STRIKETHROUGH);
+    options.insert(Options::ENABLE_TABLES);
+    options.insert(Options::ENABLE_FOOTNOTES);
+    options.insert(Options::ENABLE_TASKLISTS);
+    let parser = Parser::new_ext(md, options);
+    let mut html_output = String::new();
+    html::push_html(&mut html_output, parser);
+    html_output
+}
 
 /// The main function
 ///
@@ -213,7 +226,7 @@ fn post_title(path: &str, target: &str) -> String {
 /// Generates the html file for a post
 ///
 /// Look for the layout in the settings section of the markdown file
-/// and use it to generate the html file, through the ```to_html``` function
+/// and use it to generate the html file, through the ```find_and_replace``` function
 ///
 /// Input:
 /// - ```path```: the path to the markdown file which corresponds to ```{{ previous-page }}```
@@ -258,7 +271,7 @@ fn make_post(path: &PathBuf, vars: &mut HashMap<&str, String>) -> Result<String,
         }
     });
 
-    let s = match to_html(&var_tmp) {
+    let s = match find_and_replace(&var_tmp) {
         Ok(html) => html,
         Err(e) => {
             return Err(e);
@@ -317,7 +330,7 @@ fn get_vars(content: &str) -> Result<HashMap<&str, String>, std::io::Error> {
         });
 
     let content = replace_vars(&md_content[2..].join("---"), &vars);
-    vars.insert("content", markdown::to_html(&content));
+    vars.insert("content", to_html(&content));
     Ok(vars)
 }
 
@@ -338,7 +351,7 @@ fn get_vars(content: &str) -> Result<HashMap<&str, String>, std::io::Error> {
 /// Output:
 /// - Ok(html): the html String
 /// - Err(error): the error
-fn to_html(vars: &HashMap<&str, String>) -> Result<String, std::io::Error> {
+fn find_and_replace(vars: &HashMap<&str, String>) -> Result<String, std::io::Error> {
     // here I should be able to get the target: solution insert it in the HashMap
     let mut layout = vars.get("TARGET").unwrap().to_string() + "layout/";
     layout = layout + vars.get("layout").unwrap() + ".html";
