@@ -43,7 +43,7 @@ fn main() {
 }
 
 #[component]
-#[component]
+
 fn App() -> impl IntoView {
     let (count, set_count) = create_signal(0);
 

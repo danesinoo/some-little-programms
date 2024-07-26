@@ -53,7 +53,6 @@ async fn main() -> Result<()> {
         }
     }
 
-    #[allow(unreachable_code)]
     Ok(())
 }
 

@@ -163,7 +163,9 @@ fn make_collection(
     // build the html files for each markdown file
     let html_files = html_filename[1..]
         .iter()
-        .map(|md| make_post(&PathBuf::from(md), &mut vars).unwrap())
+        .map(|md| {
+            make_post(&PathBuf::from(md), &mut vars).unwrap()
+    })
         .collect::<Vec<_>>();
 
     Ok((html_files, html_filename))
@@ -218,7 +220,7 @@ fn get_links(links: &[String], vars: &HashMap<&str, String>) -> String {
 /// ---
 /// ...
 fn post_title(path: &str, target: &str) -> String {
-    let path = target.to_string() + &path.replace(".html", ".md");
+    let path = PathBuf::from(target).join(path.replace(".html", ".md"));
     let content = fs::read_to_string(path).unwrap();
     content.lines().find(|s| s.starts_with("title: ")).unwrap()[7..].to_string()
 }
@@ -251,8 +253,9 @@ fn make_post(path: &PathBuf, vars: &mut HashMap<&str, String>) -> Result<String,
         .unwrap()
         .replace(".html", ".md");
 
+    let content_path = PathBuf::from(vars.get("TARGET").unwrap()).join(current_page.clone());
     let content =
-        match fs::read_to_string(&format!("{}{}", vars.get("TARGET").unwrap(), current_page)) {
+        match fs::read_to_string(&content_path) {
             Ok(s) => s,
             Err(e) => {
                 return Err(e);
@@ -265,6 +268,7 @@ fn make_post(path: &PathBuf, vars: &mut HashMap<&str, String>) -> Result<String,
             return Err(e);
         }
     };
+
     vars.iter().for_each(|(key, value)| {
         if !var_tmp.contains_key(key) {
             var_tmp.insert(key, value.to_string());
@@ -277,6 +281,7 @@ fn make_post(path: &PathBuf, vars: &mut HashMap<&str, String>) -> Result<String,
             return Err(e);
         }
     };
+
     vars.insert("next-page", current_page.replace(".md", ".html"));
     Ok(s)
 }
@@ -353,8 +358,9 @@ fn get_vars(content: &str) -> Result<HashMap<&str, String>, std::io::Error> {
 /// - Err(error): the error
 fn find_and_replace(vars: &HashMap<&str, String>) -> Result<String, std::io::Error> {
     // here I should be able to get the target: solution insert it in the HashMap
-    let mut layout = vars.get("TARGET").unwrap().to_string() + "layout/";
-    layout = layout + vars.get("layout").unwrap() + ".html";
+    let mut layout = PathBuf::from(vars.get("TARGET").unwrap().to_string());
+    layout = layout.join("layout");
+    layout = layout.join(vars.get("layout").unwrap().to_owned() + ".html");
     let mut s = fs::read_to_string(&layout)?;
     s = replace_use(&s, &vars.get("TARGET").unwrap());
     Ok(replace_vars(&s, &vars))
@@ -365,7 +371,8 @@ fn replace_use(content: &str, target: &str) -> String {
     let mut html = String::new();
     for s in content.lines() {
         if s.starts_with("use") {
-            let layout = format!("{}layout/", target) + s[4..].trim() + ".html";
+            let mut layout = PathBuf::from(target).join("layout");
+            layout = layout.join(s[4..].trim().to_owned() + ".html");
             html += &fs::read_to_string(&layout).unwrap();
         } else {
             html = html + "\n" + s;

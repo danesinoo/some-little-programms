@@ -46,6 +46,7 @@ fn main() -> Result<()> {
             Ok(_) => (),
             Err(e) => println!("Build {} failed: {}", path.to_str().unwrap(), e),
         };
+        println!("Build {} success", out);
         path
     };
 
