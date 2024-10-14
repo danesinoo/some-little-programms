@@ -1,6 +1,6 @@
 const COMMANDS: &[&str] = &["brew update", "brew upgrade", "brew cleanup"];
 
-pub fn execute_daily() {
+pub async fn execute_daily() {
     // set a timer for the next day
     let secs_per_day = 24 * 60 * 60;
 

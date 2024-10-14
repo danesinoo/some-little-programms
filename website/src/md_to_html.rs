@@ -163,9 +163,7 @@ fn make_collection(
     // build the html files for each markdown file
     let html_files = html_filename[1..]
         .iter()
-        .map(|md| {
-            make_post(&PathBuf::from(md), &mut vars).unwrap()
-    })
+        .map(|md| make_post(&PathBuf::from(md), &mut vars).unwrap())
         .collect::<Vec<_>>();
 
     Ok((html_files, html_filename))
@@ -254,13 +252,12 @@ fn make_post(path: &PathBuf, vars: &mut HashMap<&str, String>) -> Result<String,
         .replace(".html", ".md");
 
     let content_path = PathBuf::from(vars.get("TARGET").unwrap()).join(current_page.clone());
-    let content =
-        match fs::read_to_string(&content_path) {
-            Ok(s) => s,
-            Err(e) => {
-                return Err(e);
-            }
-        };
+    let content = match fs::read_to_string(&content_path) {
+        Ok(s) => s,
+        Err(e) => {
+            return Err(e);
+        }
+    };
 
     let mut var_tmp = match get_vars(&content) {
         Ok(hash) => hash,
@@ -370,9 +367,9 @@ fn find_and_replace(vars: &HashMap<&str, String>) -> Result<String, std::io::Err
 fn replace_use(content: &str, target: &str) -> String {
     let mut html = String::new();
     for s in content.lines() {
-        if s.starts_with("use") {
+        if s.trim().starts_with("use") {
             let mut layout = PathBuf::from(target).join("layout");
-            layout = layout.join(s[4..].trim().to_owned() + ".html");
+            layout = layout.join(s.trim()[4..].to_owned() + ".html");
             html += &fs::read_to_string(&layout).unwrap();
         } else {
             html = html + "\n" + s;

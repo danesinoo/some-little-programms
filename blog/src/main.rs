@@ -1,7 +1,7 @@
 use std::env;
 use std::io::Write;
 
-const PATH: &str = "/Users/carlorosso/.config/programmini/site/src/";
+const PATH: &str = "/Users/carlorosso/.config/programmini/note/src/";
 
 const STARTER: &str = "--- \nlayout: {{ layout }}
 title: {{ date }}
@@ -10,35 +10,39 @@ category: {{ topic }}
 
 struct Note {
     topic: String,
-    layout: String,
 }
+
+const PAGES: [&str; 3] = ["page", "pensiero", "poesia"];
+const PRESENTATIONS: [&str; 1] = ["preview"];
 
 impl Note {
     fn new(s: &str) -> Note {
-        let (topic, private) = match s {
-            "page" | "diario" | "d" | "diary" => ("pagina".to_string(), false),
-            "p" | "pensiero" | "pensieri" | "public" => ("pensiero".to_string(), false),
-            "poesia" | "poesie" | "poem" | "poems" => ("poesia".to_string(), false),
-            "r" | "riflessione" | "riflessioni" | "private" => ("riflessione".to_string(), true),
-            _ => (s.to_string(), true),
+        let topic = match s {
+            "page" | "diario" | "d" | "diary" => "pagina",
+            "p" | "pensiero" | "pensieri" | "public" => "pensiero",
+            "poesia" | "poesie" | "poem" | "poems" => "poesia",
+            "r" | "riflessione" | "riflessioni" | "private" => "riflessione",
+            _ => s,
         };
 
-        if private {
-            Note {
-                topic,
-                layout: "page-private".to_string(),
-            }
+        Note {
+            topic: topic.to_string(),
+        }
+    }
+
+    fn layout(&self) -> String {
+        if PAGES.contains(&self.topic.as_str()) {
+            "page".to_string()
+        } else if PRESENTATIONS.contains(&self.topic.as_str()) {
+            "preview".to_string()
         } else {
-            Note {
-                topic,
-                layout: "page".to_string(),
-            }
+            "page-private".to_string()
         }
     }
 
     fn header(&self) -> Vec<u8> {
         let mut header = STARTER.to_string();
-        header = header.replace("{{ layout }}", &self.layout);
+        header = header.replace("{{ layout }}", &self.layout());
         header = header.replace(
             "{{ date }}",
             &chrono::Local::now().format("%d/%m").to_string(),
@@ -96,7 +100,6 @@ fn main() -> Result<(), std::io::Error> {
         Some(arg) => Note::new(&arg),
         None => Note {
             topic: "pagina".to_string(),
-            layout: "page".to_string(),
         },
     };
 

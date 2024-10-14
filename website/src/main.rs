@@ -24,64 +24,85 @@
 //! - usare axum per creare un server che serve i file html (molto simile a actix-web)
 
 use notify::{RecursiveMode, Result};
+use std::sync::Arc;
 mod md_to_html;
 use chrono::Local;
 use md_to_html::md_to_html;
 use notify_debouncer_mini::new_debouncer;
-use std::env;
 use std::path::PathBuf;
 mod daily_command;
 mod service;
 use actix_web::{web, App, HttpServer};
 use daily_command::execute_daily;
-use service::{idx, pages};
+use service::{idx, pages, AppState};
+
+const WEBSITES: [(&str, &str, (&str, u16)); 2] = [
+    (
+        "/Users/carlorosso/.config/programmini/note/src",
+        "/Users/carlorosso/.config/programmini/note",
+        ("127.0.0.1", 10000),
+    ),
+    (
+        "/Users/carlorosso/.config/notes",
+        "/Users/carlorosso/Documents/site",
+        ("127.0.0.1", 10001),
+    ),
+];
 
 #[tokio::main]
 async fn main() -> Result<()> {
-    let (src, out, s) = get_input();
+    tokio::task::spawn(async { execute_daily().await });
+    let mut servers = vec![];
 
-    std::thread::spawn(move || html_generator(&src, &out));
-    std::thread::spawn(move || execute_daily());
+    for (src, out, addr) in WEBSITES {
+        tokio::task::spawn(async move {
+            let src = src.to_string();
+            let out = out.to_string() + "/";
+            html_generator(&src, &out)
+        });
 
-    if s {
-        let addr = ("127.0.0.1", 10000);
-        let server = tokio::task::spawn(start_blog(addr));
-        println!("Server running at http://{}:{}", addr.0, addr.1);
+        servers.push(tokio::task::spawn(async move {
+            start_blog(addr, out).await;
+        }));
 
-        if let Err(e) = server.await {
-            println!("server error: {}", e);
-        }
+        println!("serving {} on {}:{}", out, addr.0, addr.1);
+    }
+
+    let res = futures::future::join_all(servers).await;
+
+    for r in res {
+        println!("{:?}", r);
     }
 
     Ok(())
 }
 
-fn get_input() -> (String, String, bool) {
-    let mut out = "./site".to_string();
-    let mut src = "./".to_string();
-    let mut s = false;
-
-    let args = env::args().collect::<Vec<_>>();
-    let mut args_iter = args[1..].iter();
-    while let Some(arg) = args_iter.next() {
-        match arg.as_str() {
-            "-s" => src = args_iter.next().unwrap().to_string(),
-            "-o" => out = args_iter.next().unwrap().to_string(),
-            "--serve" => {
-                s = true;
-            }
-            _ => {
-                // help
-                println!(
-                    "Usage: {} [-s source] [-o output] [--serve]\n entered {}, instead",
-                    args[0], arg
-                );
-                std::process::exit(0);
-            }
-        }
-    }
-    (src, out, s)
-}
+// fn get_input() -> (String, String, bool) {
+//     let mut out = "./site".to_string();
+//     let mut src = "./".to_string();
+//     let mut s = false;
+//
+//     let args = env::args().collect::<Vec<_>>();
+//     let mut args_iter = args[1..].iter();
+//     while let Some(arg) = args_iter.next() {
+//         match arg.as_str() {
+//             "-s" => src = args_iter.next().unwrap().to_string(),
+//             "-o" => out = args_iter.next().unwrap().to_string(),
+//             "--serve" => {
+//                 s = true;
+//             }
+//             _ => {
+//                 // help
+//                 println!(
+//                     "Usage: {} [-s source] [-o output] [--serve]\n entered {}, instead",
+//                     args[0], arg
+//                 );
+//                 std::process::exit(0);
+//             }
+//         }
+//     }
+//     (src, out, s)
+// }
 
 fn html_generator(target: &str, dest: &str) -> Result<()> {
     let (tx, rx) = std::sync::mpsc::channel();
@@ -106,9 +127,12 @@ fn html_generator(target: &str, dest: &str) -> Result<()> {
     Ok(())
 }
 
-async fn start_blog(addr: (&str, u16)) {
-    HttpServer::new(|| {
+async fn start_blog(addr: (&str, u16), path: &str) {
+    let shared_state = Arc::new(AppState::new(path));
+    HttpServer::new(move || {
+        let state = shared_state.clone();
         App::new()
+            .app_data(web::Data::new(state))
             .route("/", web::get().to(idx))
             .route("/{path:.*}", web::get().to(pages))
     })
